@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import AdminPanel from './admin/AdminPanel';
+import MainBoard from './components/MainBoard';
 
-var adminPanel = new AdminPanel();
+
+
+
 
 ReactDOM.render(
-    adminPanel.render(),
+    <MainBoard />,
     document.getElementById('app')
 );
