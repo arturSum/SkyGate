@@ -1,0 +1,55 @@
+#navigationBar *{
+
+    list-style-type: none;
+    text-decoration: none;
+
+    margin:0;
+    padding:0;
+    color: white;
+
+}
+
+
+#navigationBar .navButton{
+
+    height: 50px;
+}
+
+#navigationBar .navButton:hover{
+
+    background-color: #060606;
+
+}
+
+
+
+#navigationBar .navButton a{
+
+    font-size: 115%;
+
+    display: flex;
+    align-items: center;
+
+    height: 100%;
+    width: 100%;
+
+
+}
+#navigationBar .navButton a.selected{
+
+    border-left: solid 8px #2a9fd6;
+
+}
+
+
+
+#navigationBar .navButton a span{
+
+    margin-left: 30px;
+
+}
+#navigationBar .navButton a.selected span{
+
+    margin-left: 22px;
+
+}

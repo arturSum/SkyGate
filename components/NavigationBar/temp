@@ -1,0 +1,14 @@
+
+ var currentClickedButton = event.target;
+
+        if(lastClickedButton === currentClickedButton){
+            return;
+        }
+
+
+
+        lastClickedButton.className = lastClickedButton.replace('active', '');
+
+        currentClickedButton.className = `${currentClickedButton.className} active`;
+
+        lastClickedButton = currentClickedButton;

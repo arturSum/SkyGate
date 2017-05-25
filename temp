@@ -1,0 +1,35 @@
+<ul>
+
+                <li className="navButton">
+
+                    <NavLink exact to='/' activeClassName="selected">
+                        <span>Pickers List</span>
+                    </NavLink>
+
+                </li>
+
+                <li className="navButton">
+
+                    <NavLink to='/addPickerProfile' activeClassName="selected">
+                        <span>Add Picker Profile</span>
+                    </NavLink>
+
+                </li>
+
+                <li className="navButton">
+
+                     <NavLink to='/removePickerProfile' activeClassName="selected">
+                         <span>Remove Picker Profile</span>
+                     </NavLink>
+
+                </li>
+
+                <li className="navButton">
+
+                    <NavLink to='/assignStock' activeClassName="selected">
+                        <span>Assign stock to pickers</span>
+                    </NavLink>
+
+                </li>
+
+            </ul>

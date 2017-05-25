@@ -4,13 +4,17 @@ import {
     Route
 } from 'react-router-dom';
 
+import 'bootstrap/dist/css/bootstrap.css'
 
-import NavigationBar from './NavigationBar';
+
+import NavigationBar from './NavigationBar/NavigationBar';
 
 import PickerList from './PickerList';
-import AddPickerProfile from './AddPickerProfile';
+import AddPickerProfile from './AddPickerProfile/AddPickerProfile';
 import RemovePickerProfile from './RemovePickerProfile';
+import AssignStock from './AssignStock/AssignStock';
 
+import './MainBoardStyle.css';
 
 
 var MainBoard = ()=>{
@@ -20,17 +24,42 @@ var MainBoard = ()=>{
 
         <BrowserRouter>
 
-            <div id="mainBoard">
+            <div id="mainBoard" className="container-fluid">
 
-                <NavigationBar />
+                <div className="panelTitle row">
+
+                    <div className="col-md-12">
+
+                        <h1>Rabbit Pickers Administrator Panel</h1>
+
+                    </div>
+
+                </div>
 
 
-                <Route exact path="/" component={PickerList} />
+                <div className="row adminPanel">
 
-                <Route path="/addPickerProfile" component={AddPickerProfile} />
+                    <div className="col-md-2 addPickerProfileContainer">
 
-                <Route path="/removePickerProfile" component={RemovePickerProfile} />
+                        <NavigationBar />
 
+                    </div>
+
+                    <div className="viewContainer col-md-10">
+
+                        <div className="row">
+
+                            <Route exact path="/" component={PickerList} />
+                            <Route path="/addPickerProfile" component={AddPickerProfile} />
+                            <Route path="/removePickerProfile" component={RemovePickerProfile} />
+                            <Route path="/assignStock" component={AssignStock} />
+
+                        </div>
+
+                    </div>
+
+
+                </div>
 
 
             </div>

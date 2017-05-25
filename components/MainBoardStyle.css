@@ -1,0 +1,53 @@
+html, body, #app{
+    height: 100%;
+}
+
+#mainBoard{
+
+    margin:0;
+    padding:0;
+    color: white;
+
+}
+
+#mainBoard .addPickerProfileContainer{
+
+    padding-right: 0;
+
+}
+
+
+#mainBoard{
+
+    background-color: #222222;
+    height: 100%;
+    overflow: hidden;
+
+}
+
+#mainBoard .panelTitle{
+    margin: 40px;
+}
+
+#mainBoard .panelTitle h1{
+
+    text-align: center;
+
+}
+
+
+
+
+#mainBoard .adminPanel{
+
+    height: 100%;
+
+}
+
+
+#mainBoard .viewContainer{
+
+    background-color: #060606;
+    height: 100%;
+
+}
