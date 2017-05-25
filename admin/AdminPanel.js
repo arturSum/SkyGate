@@ -1,24 +1,38 @@
-import RabbitProfile from './../RabbitProfile';
-import KingdomWorkers from '../KingdomWorkers';
+import React from 'react';
+
+import KingdomPickers from '../KingdomPickers';
+
+import AdminPanelTemplate from './AdminPanelTemplate';
+
+
 
 
 
 class AdminPanel{
 
 
-    createNewRabbitProfile(rabbitName){
 
-        KingdomWorkers.addNew(new RabbitProfile(
-            rabbitName
-        ));
+    createNewPickerProfile(rabbitName){
+
+
+        KingdomPickers.addNew(new Rabbit(rabbitName))
 
     }
 
-    removeExistingRabbitProfile(profileId){
+    removeExistingPickerProfile(profileId){
 
-        KingdomWorkers.remove(profileId);
+        KingdomPickers.remove(profileId);
+
+    }
+
+
+    render(){
+
+        return <AdminPanelTemplate />;
 
     }
 
 
 }
+
+export default AdminPanel;

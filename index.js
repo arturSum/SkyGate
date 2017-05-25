@@ -1,7 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import AdminPanel from './admin/AdminPanel';
+
+var adminPanel = new AdminPanel();
+
 ReactDOM.render(
-    <h1>Hello, world!</h1>,
+    adminPanel.render(),
     document.getElementById('app')
 );
