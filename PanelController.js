@@ -3,7 +3,7 @@ import React from 'react';
 import RabbitProfileFactory from './RabbitProfileFactory';
 import RabbitKingdom from './RabbitKingdom';
 import RabbitFactory from './RabbitFactory';
-
+import ProductFactory from './ProductFactory';
 
 
 
@@ -26,9 +26,21 @@ class PanelController{
     removeExistingProfile(profileId){
 
 
-        RabbitKingdom.removeMember()
+        RabbitKingdom.removeMember(profileId)
 
     }
+
+
+    addProduct(profileId, productId, quantity){
+
+
+        var pickedProduct = ProductFactory.createNew(productId, quantity);
+
+
+        RabbitKingdom.assignNewNewProductToMember(profileId, pickedProduct);
+
+    }
+
 
 
 

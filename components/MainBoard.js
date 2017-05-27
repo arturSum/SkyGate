@@ -9,9 +9,9 @@ import 'bootstrap/dist/css/bootstrap.css'
 
 import NavigationBar from './NavigationBar/NavigationBar';
 
-import PickerList from './PickerList';
+import KingdomPopulationList from './KingdomPopulationList/KingdomPopulationList';
 import AddPickerProfile from './AddPickerProfile/AddPickerProfile';
-import RemovePickerProfile from './RemovePickerProfile';
+import RemoveProfile from './RemoveProfile/RemoveProfile';
 import AssignStock from './AssignStock/AssignStock';
 
 import './MainBoardStyle.css';
@@ -49,9 +49,9 @@ var MainBoard = ()=>{
 
                         <div className="row">
 
-                            <Route exact path="/" component={PickerList} />
+                            <Route exact path="/" component={KingdomPopulationList} />
                             <Route path="/addPickerProfile" component={AddPickerProfile} />
-                            <Route path="/removePickerProfile" component={RemovePickerProfile} />
+                            <Route path="/removePickerProfile" component={RemoveProfile} />
                             <Route path="/assignStock" component={AssignStock} />
 
                         </div>

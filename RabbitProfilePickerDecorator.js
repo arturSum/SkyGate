@@ -14,6 +14,7 @@ class RabbitProfilePickerDecorator extends RabbitProfile{
 
     addStock(product){
 
+        this.pickedStock.push(product);
 
     }
 

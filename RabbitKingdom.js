@@ -1,15 +1,17 @@
-import {IdGenerator} from './AppManager';
+
+import KingdomModelStorageManager from './KingdomModelStorageManager';
+
 
 
 
 var RabbitKingdom = (()=>{
 
-    var kingdomPopulationList = new Map(),
 
+    //przeniesc to do KingdomModelStorageManager
 
-        areRabbitExistInKingdomPopulation = rabbitProfile=>{
+    var areRabbitExistInKingdomPopulation = rabbitProfileId=>{
 
-            return kingdomPopulationList.has(rabbitProfile.id);
+            return KingdomModelStorageManager.hasData(rabbitProfileId);
         };
 
 
@@ -17,34 +19,50 @@ var RabbitKingdom = (()=>{
 
         addNewMember(rabbitProfile){
 
-
-            kingdomPopulationList.set(
-                IdGenerator.getNextAvailableValue(),
-                rabbitProfile
-            );
+            KingdomModelStorageManager.addData(rabbitProfile);
 
         },
 
-        removeMember(rabbitProfile){
+        removeMember(rabbitProfileId){
 
-            if(areRabbitExistInKingdomPopulation(rabbitProfile)){
-                kingdomPopulationList.delete(rabbitProfile)
+            if(areRabbitExistInKingdomPopulation(rabbitProfileId)){
+
+                KingdomModelStorageManager.deleteData(rabbitProfileId);
+
             }
 
         },
 
 
-        getSingleWorkerInfo(rabbitProfile){
 
-            if(areRabbitExistInKingdomPopulation(rabbitProfile)){
-                return kingdomPopulationList.get(rabbitProfile.id)
+        assignNewNewProductToMember(profileId, product){
+
+            var memberProfile = KingdomModelStorageManager.getData(profileId);
+
+
+            memberProfile.addStock(product);
+
+            KingdomModelStorageManager.updateData(profileId, memberProfile);
+
+
+        },
+
+
+
+
+        getSingleWorkerInfo(rabbitProfileId){
+
+            if(areRabbitExistInKingdomPopulation(rabbitProfileId)){
+
+                return KingdomModelStorageManager.getData(rabbitProfileId);
             }
 
         },
 
 
         getCurrentWorkersAvailableList(){
-            return kingdomPopulationList;
+
+            return KingdomModelStorageManager.getAllData();
         }
 
 
