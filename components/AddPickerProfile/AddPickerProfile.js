@@ -6,7 +6,15 @@ import './AddProfileStyle.css';
 
 
 
-var AddPickerProfile = ()=>{
+var AddPickerProfile = (props)=>{
+
+
+    var {
+
+        pageController
+
+    } = props;
+
 
     return(
 
@@ -29,7 +37,10 @@ var AddPickerProfile = ()=>{
 
                             <input type="text" className="form-control" id="pickerName" placeholder="picker name"/>
 
-                            <button className="btn btn-success" type="submit">Create ...</button>
+                            <button className="btn btn-success"
+                                    onClick={()=>{ pageController.createNewProfile('Test') }}
+                            >Create ...
+                            </button>
 
                         </div>
 

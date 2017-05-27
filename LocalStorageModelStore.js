@@ -66,7 +66,7 @@ class LocalStorageModelStore extends ModelStoreStrategy{
 
     save(){
 
-        localStorage['RabbitKingdomModel'] = JSON.stringify([...this.model]);
+        localStorage['RabbitKingdomModel'] = JSON.stringify(this.model);
 
     }
 

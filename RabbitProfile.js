@@ -3,9 +3,18 @@ class RabbitProfile{
 
     constructor(rabbit){
 
-        this.memberDetails = rabbit;
+        this.data = {
+
+            memberDetails : rabbit
+        }
 
     }
+
+    getData(){
+
+        return this.data;
+    }
+
 
 }
 

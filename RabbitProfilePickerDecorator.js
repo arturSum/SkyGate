@@ -7,7 +7,7 @@ class RabbitProfilePickerDecorator extends RabbitProfile{
 
         super(rabbit);
 
-        this.pickedStock = [];
+        this.data = Object.assign(this.data, {pickedStock : []});
 
     }
 

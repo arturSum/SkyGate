@@ -14,10 +14,16 @@ import AddPickerProfile from './AddPickerProfile/AddPickerProfile';
 import RemoveProfile from './RemoveProfile/RemoveProfile';
 import AssignStock from './AssignStock/AssignStock';
 
+import PanelController from './../PanelController';
+
+
 import './MainBoardStyle.css';
 
 
 var MainBoard = ()=>{
+
+
+    var pageController = new PanelController();
 
 
     return(
@@ -50,8 +56,11 @@ var MainBoard = ()=>{
                         <div className="row">
 
                             <Route exact path="/" component={KingdomPopulationList} />
-                            <Route path="/addPickerProfile" component={AddPickerProfile} />
+
+                            <Route path="/addPickerProfile" render={()=><AddPickerProfile pageController={pageController} />} />
+
                             <Route path="/removePickerProfile" component={RemoveProfile} />
+
                             <Route path="/assignStock" component={AssignStock} />
 
                         </div>
