@@ -39,7 +39,8 @@ var AddPickerProfile = (props)=>{
 
                             <button className="btn btn-success"
                                     onClick={()=>{ pageController.createNewProfile('Test') }}
-                            >Create ...
+                            >
+                                Create ...
                             </button>
 
                         </div>

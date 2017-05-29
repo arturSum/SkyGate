@@ -1,22 +1,19 @@
 
+import PickerRabbitProfile from './PickerRabbitProfile';
+
+
 
 var RabbitFactory = (()=>{
 
+   return{
 
-    return{
+       createNewProfile(profileName){
 
-        createNew(rabbitName){
+           return new PickerRabbitProfile(profileName);
 
-            return{
+       }
 
-                name:rabbitName
-
-            }
-
-
-        }
-
-    }
+   }
 
 
 })();

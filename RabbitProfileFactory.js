@@ -6,9 +6,9 @@ var RabbitProfileFactory = (()=>{
 
     return{
 
-        createNewProfile(rabit){
+        createNewProfile(profileName){
 
-           return new RabbitProfilePickerDecorator(rabit);
+           return new RabbitProfilePickerDecorator(profileName);
 
         }
 

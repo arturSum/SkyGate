@@ -20,7 +20,7 @@ var NavigationBar = ()=>{
 
     ],
 
-    navLinks = navButtonsDescriptions.map((singleLink, i)=> {
+    navLinks = navButtonsDescriptions.map((singleLink, i)=>{
 
                     var [href, description] = singleLink;
 

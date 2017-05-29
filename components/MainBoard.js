@@ -22,8 +22,8 @@ import './MainBoardStyle.css';
 
 var MainBoard = ()=>{
 
-
-    var pageController = new PanelController();
+    var pageController = new PanelController(),
+        model = pageController.getAllKingdomMembersProfile();
 
 
     return(
@@ -55,11 +55,11 @@ var MainBoard = ()=>{
 
                         <div className="row">
 
-                            <Route exact path="/" component={KingdomPopulationList} />
+                            <Route exact path="/" render={()=><KingdomPopulationList model={model} />} />
 
                             <Route path="/addPickerProfile" render={()=><AddPickerProfile pageController={pageController} />} />
 
-                            <Route path="/removePickerProfile" component={RemoveProfile} />
+                            <Route path="/removePickerProfile" render={()=><RemoveProfile pageController={pageController} profileNameList={Object.keys(model)} />} />
 
                             <Route path="/assignStock" component={AssignStock} />
 

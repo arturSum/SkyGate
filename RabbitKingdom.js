@@ -1,66 +1,64 @@
 
 import KingdomModelStorageManager from './KingdomModelStorageManager';
 
+import RabbitFactory from './RabbitFactory';
 
 
 
 var RabbitKingdom = (()=>{
 
 
-    //przeniesc to do KingdomModelStorageManager
-
-    var areRabbitExistInKingdomPopulation = rabbitProfileId=>{
-
-            return KingdomModelStorageManager.hasData(rabbitProfileId);
-        };
 
 
     return{
 
-        addNewMember(rabbitProfile){
+        addNewMember(profileName){
+
+            var rabbitProfile = RabbitFactory.createNewProfile(profileName);
 
             KingdomModelStorageManager.addData(rabbitProfile);
 
-        },
-
-        removeMember(rabbitProfileId){
-
-            if(areRabbitExistInKingdomPopulation(rabbitProfileId)){
-
-                KingdomModelStorageManager.deleteData(rabbitProfileId);
-
-            }
 
         },
 
+        removeMember(profileName){
+
+           KingdomModelStorageManager.deleteData(profileName);
 
 
-        assignNewNewProductToMember(profileId, product){
+        },
 
-            var memberProfile = KingdomModelStorageManager.getData(profileId);
+
+
+        assignNewNewProductToMember(profileName, product){
+
+            var memberProfile = KingdomModelStorageManager.getData(profileName);
 
 
             memberProfile.addStock(product);
 
-            KingdomModelStorageManager.updateData(profileId, memberProfile);
+            KingdomModelStorageManager.updateData(memberProfile);
 
 
         },
 
 
+
+        profileExist(profileName){
+
+            KingdomModelStorageManager.hasData(profileName);
+
+        },
 
 
         getSingleWorkerInfo(rabbitProfileId){
 
-            if(areRabbitExistInKingdomPopulation(rabbitProfileId)){
-
-                return KingdomModelStorageManager.getData(rabbitProfileId);
-            }
+            return KingdomModelStorageManager.getData(rabbitProfileId);
 
         },
 
 
-        getCurrentWorkersAvailableList(){
+        getCurrentMemberAvailableList(){
 
             return KingdomModelStorageManager.getAllData();
         }

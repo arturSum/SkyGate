@@ -1,5 +1,4 @@
 
-import {IdGenerator} from './AppManager';
 
 import ModelStoreStrategy from './ModelStoreStrategy';
 
@@ -22,9 +21,9 @@ class LocalStorageModelStore extends ModelStoreStrategy{
     }
 
 
-    add(data){
+    add(id, data){
 
-        this.model[IdGenerator.getNextAvailableValue()] = data;
+        this.model[id] = data;
 
         this.save();
     }
@@ -44,6 +43,8 @@ class LocalStorageModelStore extends ModelStoreStrategy{
         if(this.model.hasOwnProperty(dataId)){
 
             delete this.model[dataId];
+
+            this.save();
         }
 
     }
@@ -55,6 +56,7 @@ class LocalStorageModelStore extends ModelStoreStrategy{
 
             return this.model;
         }
+
 
         return this.model.hasOwnProperty(id)? this.model[id] : false;
 

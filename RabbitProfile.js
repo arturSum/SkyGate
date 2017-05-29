@@ -1,19 +1,21 @@
 
+
 class RabbitProfile{
 
-    constructor(rabbit){
+    constructor(profileName){
 
-        this.data = {
+        this.name  = profileName;
+    }
 
-            memberDetails : rabbit
-        }
+    getName(){
 
+        return this.name;
     }
 
     getData(){
-
-        return this.data;
+        throw 'Method getData must be implements'
     }
+
 
 
 }

@@ -3,11 +3,12 @@
 
 class Carrot{
 
-    constructor(carrotQnt){
+    constructor(id, carrotQnt){
 
-        this.name = 'Carrot';
-
+        this.id = id;
         this.qnt = carrotQnt;
+
+        this.description = 'Carrot';
 
     }
 

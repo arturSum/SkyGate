@@ -1,8 +1,6 @@
 import React from 'react';
 
-import RabbitProfileFactory from './RabbitProfileFactory';
 import RabbitKingdom from './RabbitKingdom';
-import RabbitFactory from './RabbitFactory';
 import ProductFactory from './ProductFactory';
 
 
@@ -12,35 +10,46 @@ class PanelController{
 
 
 
-    createNewProfile(rabbitName){
+    createNewProfile(profileName){
 
 
-        var rabbit = RabbitFactory.createNew(rabbitName),
-            rabbitProfile = RabbitProfileFactory.createNewProfile(rabbit);
+        if(RabbitKingdom.profileExist(profileName)){
 
-        RabbitKingdom.addNewMember(rabbitProfile);
+            console.log('profile exist');
+
+            return;
+
+        }
+
+        RabbitKingdom.addNewMember(profileName);
 
 
     }
 
-    removeExistingProfile(profileId){
+    removeExistingProfile(profileName){
 
-
-        RabbitKingdom.removeMember(profileId)
+        RabbitKingdom.removeMember(profileName)
 
     }
 
 
-    addProduct(profileId, productId, quantity){
+    addProduct(profileName, productId, quantity){
 
 
         var pickedProduct = ProductFactory.createNew(productId, quantity);
 
 
-        RabbitKingdom.assignNewNewProductToMember(profileId, pickedProduct);
+        RabbitKingdom.assignNewNewProductToMember(profileName, pickedProduct);
 
     }
 
+
+
+    getAllKingdomMembersProfile(){
+
+        return RabbitKingdom.getCurrentMemberAvailableList();
+
+    }
 
 
 

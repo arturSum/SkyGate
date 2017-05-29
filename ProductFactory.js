@@ -13,10 +13,10 @@ var ProductFactory = (()=>{
 
             switch(stockId){
 
-                case 'carrot':
+                case '#carrot':
                 default:
 
-                    return new Carrot(qnt);
+                    return new Carrot(stockId, qnt);
 
             }
 

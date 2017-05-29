@@ -14,12 +14,12 @@ var KingdomModelStorageManager = ((ModelStoreStrategy)=>{
 
         addData(data){
 
-            ModelStoreStrategy.add(data.getData());
+            ModelStoreStrategy.add(data.getName(), data.getData());
         },
 
-        updateData(id, data){
+        updateData(data){
 
-            ModelStoreStrategy.update(id, data.getData());
+            ModelStoreStrategy.update(data.getName(), data.getData());
         },
 
         deleteData(id){
