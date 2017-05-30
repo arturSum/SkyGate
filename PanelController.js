@@ -35,13 +35,16 @@ class PanelController{
 
     addProduct(profileName, productId, quantity){
 
+        console.log(profileName, productId, quantity);
+
 
         var pickedProduct = ProductFactory.createNew(productId, quantity);
-
 
         RabbitKingdom.assignNewNewProductToMember(profileName, pickedProduct);
 
     }
+
+
 
 
 

@@ -9,18 +9,19 @@ var RemoveProfile = (props)=>{
 
         {
             pageController,
-        profileNameList
+            profileNameList
 
     } = props;
 
 
 
 
-    var makeOptionsNode = profileNameStorage=>{
+    var makeOptionsNode = profileStorage=>{
 
-        return profileNameStorage.map((profileName, val)=>{
 
-            return  <option key={val} value={profileName}>{profileName}</option>
+        return profileStorage.map((profile, val)=>{
+
+            return  <option key={val} value={profile}>{profile}</option>
 
         });
 

@@ -10,11 +10,7 @@ class PickerRabbitProfile extends RabbitProfile{
 
         this.pickedStock = [
 
-            {
-                id : '#carrot',
-                qnt : 20
 
-            }
 
         ];
 

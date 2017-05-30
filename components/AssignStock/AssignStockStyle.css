@@ -1,0 +1,50 @@
+#assignStock{
+
+    margin-top: 50px;
+
+}
+
+#assignStock .panel .background{
+
+    background-color: #2d2d2d;
+    margin: 15px;
+
+}
+
+#assignStock .panel{
+
+    background-color: #222222;
+
+}
+
+#assignStock .panel .panel-body{
+
+    padding: 25px;
+}
+
+
+#assignStock .panel .panel-body h4{
+
+    color: #ff8800;
+
+}
+
+#assignStockProfileSelector, #assignStockProductSelector, #assignStock .qntButton{
+
+    margin: 20px 0;
+
+}
+
+
+
+#assignStock .qntButton button{
+
+    margin: 4px 4px 0 0;
+
+}
+
+#assignStock .acceptAssign{
+
+    margin-top: 10px;
+
+}

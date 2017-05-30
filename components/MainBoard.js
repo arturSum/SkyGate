@@ -61,7 +61,7 @@ var MainBoard = ()=>{
 
                             <Route path="/removePickerProfile" render={()=><RemoveProfile pageController={pageController} profileNameList={Object.keys(model)} />} />
 
-                            <Route path="/assignStock" component={AssignStock} />
+                            <Route path="/assignStock" render={()=><AssignStock pageController={pageController} model={model} />} />
 
                         </div>
 

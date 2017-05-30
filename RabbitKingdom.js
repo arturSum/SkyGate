@@ -35,6 +35,7 @@ var RabbitKingdom = (()=>{
             var memberProfile = KingdomModelStorageManager.getData(profileName);
 
 
+
             memberProfile.addStock(product);
 
             KingdomModelStorageManager.updateData(memberProfile);
