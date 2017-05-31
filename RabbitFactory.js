@@ -11,6 +11,12 @@ var RabbitFactory = (()=>{
 
            return new PickerRabbitProfile(profileName);
 
+       },
+
+       makeProfile(profile){
+
+
+
        }
 
    }

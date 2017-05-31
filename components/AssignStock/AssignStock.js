@@ -8,7 +8,7 @@ var AssignStock = (props)=>{
 
     var {
         pageController,
-        model
+        profileNameList
     } = props,
 
 
@@ -19,31 +19,15 @@ var AssignStock = (props)=>{
     selectedProfileNode = null,
 
 
-    makeOptionsNode = profileStorage=>{
+    makeOptionsNode = profileList=>{
+
+        return profileList.map((profileId, keyCounter)=>{
+
+            return <option key={keyCounter} value={profileId}>{profileId}</option>
 
 
-        var nodeList = [],
-            keyCounter = 0;
+        });
 
-
-        for(var profileId in profileStorage){
-
-
-            if(profileStorage.hasOwnProperty(profileId)){
-
-                nodeList.push(
-
-                    <option key={keyCounter} value={profileId}>{profileId}</option>
-
-                );
-
-            }
-
-
-        }
-
-
-        return nodeList;
     };
 
 
@@ -76,7 +60,7 @@ var AssignStock = (props)=>{
                                 ref={thisNode=>{selectedProfileNode=thisNode}}
                             >
 
-                                {makeOptionsNode(model)}
+                                {makeOptionsNode(profileNameList)}
 
 
                             </select>

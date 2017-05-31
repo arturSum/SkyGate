@@ -10,6 +10,7 @@ var KingdomPopulationList = (props)=>{
 
 
 
+
     countPickedStock = (productList, productId)=>{
 
         var pickedQnt = 0,
@@ -18,13 +19,11 @@ var KingdomPopulationList = (props)=>{
 
         for(var i=0; i<productListQnt; i++){
 
-            if(productList[i].id === productId){
+            if(productList[i].getId() === productId){
 
-                pickedQnt = pickedQnt + productList[i].qnt;
+                pickedQnt = pickedQnt + productList[i].getQnt();
 
             }
-
-
         }
 
         return pickedQnt;
@@ -32,28 +31,27 @@ var KingdomPopulationList = (props)=>{
     },
 
 
-    makeTableBody = data=>{
+    makeTableBody = profileList=>{
 
         var tableCounter = 1,
-            profileData = {},
             tableRowList = [],
 
             keyCounter = 1;
 
 
-        for(var singleProfileId in data){
+        for(var profile in profileList){
 
-            if(data.hasOwnProperty(singleProfileId)){
 
-                profileData = data[singleProfileId];
+            if(profileList.hasOwnProperty(profile)){
+
 
                 tableRowList.push(
 
-                    <tr key={keyCounter}>
+                    <tr key={keyCounter++}>
 
                         <th>{tableCounter++}</th>
-                        <th>{singleProfileId}</th>
-                        <th>{countPickedStock(profileData.pickedStock, '#carrot')}</th>
+                        <th>{profileList[profile].getName()}</th>
+                        <th>{countPickedStock(profileList[profile].getPickedStock(), '#carrot')}</th>
 
                     </tr>
 
@@ -69,14 +67,7 @@ var KingdomPopulationList = (props)=>{
         return tableRowList;
 
     };
-
-
-
-
-
-
-
-
+    console.log('Reload');
 
     return(
 

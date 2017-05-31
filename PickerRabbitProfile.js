@@ -8,24 +8,15 @@ class PickerRabbitProfile extends RabbitProfile{
 
         super(profileName);
 
-        this.pickedStock = [
-
-
-
-        ];
+        this.pickedStock = [];
 
     }
 
-    getData(){
 
-        return{
+    getPickedStock(){
 
-            pickedStock : this.pickedStock
-
-        }
-
+        return this.pickedStock;
     }
-
 
 
     addStock(product){

@@ -10,10 +10,10 @@ var AddPickerProfile = (props)=>{
 
 
     var {
-
         pageController
+    } = props,
 
-    } = props;
+    pickerNameNode = null;
 
 
     return(
@@ -35,10 +35,10 @@ var AddPickerProfile = (props)=>{
 
                             <h4>Please write the picker name below</h4>
 
-                            <input type="text" className="form-control" id="pickerName" placeholder="picker name"/>
+                            <input type="text" className="form-control" id="pickerName" placeholder="picker name" ref={thisNode=>{pickerNameNode=thisNode}} />
 
                             <button className="btn btn-success"
-                                    onClick={()=>{ pageController.createNewProfile('Test') }}
+                                    onClick={()=>{ console.log(pickerNameNode.value); pageController.createNewProfile(pickerNameNode.value) }}
                             >
                                 Create ...
                             </button>

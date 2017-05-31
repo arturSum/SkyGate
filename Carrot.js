@@ -12,6 +12,16 @@ class Carrot{
 
     }
 
+    getId(){
+        return this.id;
+    }
+    getQnt(){
+        return this.qnt;
+    }
+    getDescription(){
+        return this.description;
+    }
+
 
 }
 

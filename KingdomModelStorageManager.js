@@ -1,7 +1,8 @@
 
 import LocalStorageModelStore from './LocalStorageModelStore';
 
-
+import RabbitFactory from './RabbitFactory';
+import ProductFactory from './ProductFactory';
 
 
 
@@ -14,12 +15,34 @@ var KingdomModelStorageManager = ((ModelStoreStrategy)=>{
 
         addData(data){
 
-            ModelStoreStrategy.add(data.getName(), data.getData());
+            ModelStoreStrategy.add(
+                data.getName(),
+                {
+                    pickedStock : data.getPickedStock()
+                }
+            );
         },
 
         updateData(data){
 
-            ModelStoreStrategy.update(data.getName(), data.getData());
+
+            var pickedStockList = data.getPickedStock.map(product=>{
+
+                return{
+                    id : product.getId(),
+                    qnt : product.getQnt(),
+                    description : product.getDescription()
+                }
+
+            });
+
+
+            ModelStoreStrategy.update(
+                data.getName(),
+                {
+                    pickedStock : pickedStockList
+                }
+            );
         },
 
         deleteData(id){
@@ -35,12 +58,50 @@ var KingdomModelStorageManager = ((ModelStoreStrategy)=>{
 
         getAllData(){
 
-            return this.getData('all');
+
+            var modelData = this.getData('all'),
+                modelStorage = {},
+
+                rabbitProfile = null,
+                pickedProductStock = null;
+
+
+            for(var profileId in modelData){
+
+                if(modelData.hasOwnProperty(profileId)){
+
+                    rabbitProfile = RabbitFactory.createNewProfile(profileId);
+
+
+
+
+
+                    pickedProductStock = modelData[profileId]['pickedStock'];
+
+                    pickedProductStock.forEach(product=>{
+
+                        rabbitProfile.addStock(
+                            ProductFactory.createNew(product.id, product.qnt)
+                        );
+
+                    });
+
+                    modelStorage[profileId] = rabbitProfile;
+                }
+
+            }
+
+            return modelStorage;
         },
 
         getData(dataId){
 
+
+
             return ModelStoreStrategy.get(dataId);
+
+
+
         },
 
         hasData(dataId){

@@ -23,6 +23,8 @@ class PanelController{
 
         RabbitKingdom.addNewMember(profileName);
 
+        //window.location.reload();
+
 
     }
 
