@@ -1,5 +1,8 @@
 import React from 'react';
 
+import './KingdomPopulationListStyle.css'
+
+
 var KingdomPopulationList = (props)=>{
 
 
@@ -66,36 +69,74 @@ var KingdomPopulationList = (props)=>{
 
         return tableRowList;
 
+    },
+
+
+    makeContext = (data)=>{
+
+
+        if(Object.keys(data).length === 0){
+
+            return <h3 className="nothingToShow">Nothing to show</h3>
+        }
+
+        return <table className="table table-bordered">
+
+            <thead>
+
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Carrot Qnt</th>
+            </tr>
+
+            </thead>
+
+            <tbody>
+
+                {makeTableBody(data)}
+
+            </tbody>
+
+
+        </table>
+
     };
-    console.log('Reload');
+
+
+
+    //########## RENDER #########
+
+
+
+
+
 
     return(
 
-        <div id="KingdomPopulationList">
+        <div id="KingdomPopulationList" className="col-md-10 col-md-offset-1">
 
-            <h3>Rabbit Kingdom population list</h3>
+            <div className="panel panel-primary">
 
+                <div className="panel-heading">
+                    <h3 className="panel-title">Rabbit Kingdom population list ...</h3>
+                </div>
 
-            <table className="table table-bordered">
+                <div className="background">
 
-                <thead>
+                    <div className="panel-body">
 
-                    <tr>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>Carrot Qnt</th>
-                    </tr>
+                        <div className="form-group">
 
-                </thead>
+                            {makeContext(model)}
 
-                <tbody>
+                        </div>
 
-                    {makeTableBody(model)}
+                    </div>
 
-                </tbody>
+                </div>
 
-
-            </table>
+            </div>
 
 
         </div>

@@ -1,34 +1,34 @@
-#addPickerProfile{
+#KingdomPopulationList{
 
     margin-top: 50px;
 
 }
 
-#addPickerProfile .panel .background{
+#KingdomPopulationList .panel .background{
 
     background-color: #2d2d2d;
     margin: 15px;
 
 }
 
-#addPickerProfile .panel{
+#KingdomPopulationList .panel{
 
     background-color: #222222;
 
 }
 
-#addPickerProfile .panel .panel-body{
+#KingdomPopulationList .panel .panel-body{
 
     padding: 25px;
 }
 
 
-#addPickerProfile .panel .panel-body h4{
+#KingdomPopulationList .panel .panel-body h4{
 
     color: #ff8800;
 
 }
-#addPickerProfile .panel .panel-body input{
+#KingdomPopulationList .panel .panel-body input{
 
     margin: 20px 0;
 

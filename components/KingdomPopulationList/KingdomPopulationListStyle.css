@@ -1,0 +1,38 @@
+
+#KingdomPopulationList{
+
+    margin-top: 50px;
+}
+
+#KingdomPopulationList .panel .background{
+
+    background-color: #2d2d2d;
+    margin: 15px;
+
+}
+
+#KingdomPopulationList .panel{
+
+    background-color: #222222;
+
+}
+
+#KingdomPopulationList .panel .panel-body{
+
+    padding: 25px;
+}
+
+
+#KingdomPopulationList .nothingToShow{
+    text-align: center;
+    color: #ff8800;
+}
+
+
+
+#KingdomPopulationList table thead tr{
+
+    color: #ff8800;
+
+}
+

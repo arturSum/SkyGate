@@ -38,7 +38,6 @@ var RabbitKingdom = (()=>{
 
             KingdomModelStorageManager.updateData(memberProfile);
 
-
         },
 
 

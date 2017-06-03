@@ -8,17 +8,16 @@ import './AddProfileStyle.css';
 
 var AddPickerProfile = (props)=>{
 
-
     var {
-        pageController
-    } = props,
+            pageController,
+            history
+        } = props,
 
-    pickerNameNode = null;
-
+        pickerNameNode = null;
 
     return(
 
-        <div id="addPickerProfile" className="col-md-8 col-md-offset-2">
+        <div id="KingdomPopulationList" className="col-md-8 col-md-offset-2">
 
 
             <div className="panel panel-primary">
@@ -33,12 +32,12 @@ var AddPickerProfile = (props)=>{
 
                         <div className="form-group">
 
-                            <h4>Please write the picker name below</h4>
+                            <h4>Please write the picker name</h4>
 
                             <input type="text" className="form-control" id="pickerName" placeholder="picker name" ref={thisNode=>{pickerNameNode=thisNode}} />
 
                             <button className="btn btn-success"
-                                    onClick={()=>{ console.log(pickerNameNode.value); pageController.createNewProfile(pickerNameNode.value) }}
+                                    onClick={()=>{ pageController.createNewProfile(pickerNameNode.value); history.push('/'); }}
                             >
                                 Create ...
                             </button>

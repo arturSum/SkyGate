@@ -6779,6 +6779,12 @@ button.close {
 
 
 
+
+
+
+
+
+
 #navigationBar .navButton a{
 
     font-size: 115%;
@@ -6808,37 +6814,75 @@ button.close {
 
     margin-left: 22px;
 
-}#addPickerProfile{
+}
+#KingdomPopulationList{
 
     margin-top: 50px;
-
 }
 
-#addPickerProfile .panel .background{
+#KingdomPopulationList .panel .background{
 
     background-color: #2d2d2d;
     margin: 15px;
 
 }
 
-#addPickerProfile .panel{
+#KingdomPopulationList .panel{
 
     background-color: #222222;
 
 }
 
-#addPickerProfile .panel .panel-body{
+#KingdomPopulationList .panel .panel-body{
 
     padding: 25px;
 }
 
 
-#addPickerProfile .panel .panel-body h4{
+#KingdomPopulationList .nothingToShow{
+    text-align: center;
+    color: #ff8800;
+}
+
+
+
+#KingdomPopulationList table thead tr{
 
     color: #ff8800;
 
 }
-#addPickerProfile .panel .panel-body input{
+
+#KingdomPopulationList{
+
+    margin-top: 50px;
+
+}
+
+#KingdomPopulationList .panel .background{
+
+    background-color: #2d2d2d;
+    margin: 15px;
+
+}
+
+#KingdomPopulationList .panel{
+
+    background-color: #222222;
+
+}
+
+#KingdomPopulationList .panel .panel-body{
+
+    padding: 25px;
+}
+
+
+#KingdomPopulationList .panel .panel-body h4{
+
+    color: #ff8800;
+
+}
+#KingdomPopulationList .panel .panel-body input{
 
     margin: 20px 0;
 
@@ -6868,6 +6912,14 @@ button.close {
 
     padding: 25px;
 }
+
+
+#removeRabbitProfile .modelEmpty{
+    text-align: center;
+    color: #ff8800;
+}
+
+
 
 
 #removeRabbitProfile .panel .panel-body h4{
@@ -6905,6 +6957,11 @@ button.close {
     padding: 25px;
 }
 
+#assignStock .modelEmpty{
+    text-align: center;
+    color: #ff8800;
+}
+
 
 #assignStock .panel .panel-body h4{
 
@@ -6929,6 +6986,12 @@ button.close {
 #assignStock .acceptAssign{
 
     margin-top: 10px;
+
+}
+
+#assignStock .selectedQnt{
+
+    margin-left: 10px;
 
 }html, body, #app{
     height: 100%;
@@ -6964,7 +7027,7 @@ button.close {
 #mainBoard .panelTitle h1{
 
     text-align: center;
-
+    color: #a94442;
 }
 
 

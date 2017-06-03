@@ -25,6 +25,14 @@
 }
 
 
+#removeRabbitProfile .modelEmpty{
+    text-align: center;
+    color: #ff8800;
+}
+
+
+
+
 #removeRabbitProfile .panel .panel-body h4{
 
     color: #ff8800;

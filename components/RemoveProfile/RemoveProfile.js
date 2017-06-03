@@ -9,7 +9,8 @@ var RemoveProfile = (props)=>{
 
         {
             pageController,
-            profileNameList
+            profileNameList,
+            history
 
     } = props;
 
@@ -26,6 +27,49 @@ var RemoveProfile = (props)=>{
         });
 
 
+    },
+
+    makeContent = ()=>{
+
+        if(profileNameList.length === 0){
+
+            return <div className="modelEmpty">
+
+                <h3>You can not do this operation right now</h3>
+
+            </div>
+
+        }
+
+
+        return <div>
+
+            <h4>Please select rabbit name</h4>
+
+            <select
+                className="form-control"
+                name="removeRabbitProfileSelector"
+                id="removeRabbitProfileSelector"
+
+                ref={thisNode=>selectNodeRef = thisNode}
+            >
+
+                {makeOptionsNode(profileNameList)}
+
+            </select>
+
+            <button
+                className="btn btn-success"
+                onClick={()=>{
+                    pageController.removeExistingProfile(selectNodeRef.children[selectNodeRef.selectedIndex].value);
+                    history.push('/');
+                }}
+            >
+                Delete ...
+            </button>
+
+        </div>
+
     };
 
 
@@ -33,8 +77,6 @@ var RemoveProfile = (props)=>{
     return(
 
         <div id="removeRabbitProfile" className="col-md-8 col-md-offset-2">
-
-
 
             <div className="panel panel-primary">
 
@@ -46,35 +88,11 @@ var RemoveProfile = (props)=>{
 
                     <div className="panel-body">
 
-
                         <div className="form-group">
 
-                            <h4>Please select rabbit name below</h4>
-
-
-                            <select
-                                className="form-control"
-                                name="removeRabbitProfileSelector"
-                                id="removeRabbitProfileSelector"
-
-                                ref={thisNode=>selectNodeRef = thisNode}
-                            >
-
-                                {makeOptionsNode(profileNameList)}
-
-                            </select>
-
-                            <button
-                                className="btn btn-success"
-                                onClick={()=>{
-                                    pageController.removeExistingProfile(selectNodeRef.children[selectNodeRef.selectedIndex].value)
-                                }}
-                            >
-                                Delete ...
-                            </button>
+                            {makeContent()}
 
                         </div>
-
 
                     </div>
 

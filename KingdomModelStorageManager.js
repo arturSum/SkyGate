@@ -10,6 +10,41 @@ var KingdomModelStorageManager = ((ModelStoreStrategy)=>{
 
 
 
+    var translateDataOnModel = data=>{
+
+        var modelStorage = {},
+            rabbitProfile = null,
+            pickedProductStock = null,
+            profileId = null;
+
+
+        for(profileId in data){
+
+            if(data.hasOwnProperty(profileId)){
+
+                rabbitProfile = RabbitFactory.createNewProfile(profileId);
+
+                pickedProductStock = data[profileId]['pickedStock'];
+
+                pickedProductStock.forEach(product=>{
+
+                    rabbitProfile.addStock(
+                        ProductFactory.createNew(product.id, product.qnt)
+                    );
+
+                });
+
+                modelStorage[profileId] = rabbitProfile;
+            }
+
+        }
+
+        return modelStorage;
+    };
+
+
+
+
     return{
 
 
@@ -25,24 +60,7 @@ var KingdomModelStorageManager = ((ModelStoreStrategy)=>{
 
         updateData(data){
 
-
-            var pickedStockList = data.getPickedStock.map(product=>{
-
-                return{
-                    id : product.getId(),
-                    qnt : product.getQnt(),
-                    description : product.getDescription()
-                }
-
-            });
-
-
-            ModelStoreStrategy.update(
-                data.getName(),
-                {
-                    pickedStock : pickedStockList
-                }
-            );
+            this.addData(data);
         },
 
         deleteData(id){
@@ -58,50 +76,22 @@ var KingdomModelStorageManager = ((ModelStoreStrategy)=>{
 
         getAllData(){
 
+            return this.getData('all');
 
-            var modelData = this.getData('all'),
-                modelStorage = {},
-
-                rabbitProfile = null,
-                pickedProductStock = null;
-
-
-            for(var profileId in modelData){
-
-                if(modelData.hasOwnProperty(profileId)){
-
-                    rabbitProfile = RabbitFactory.createNewProfile(profileId);
-
-
-
-
-
-                    pickedProductStock = modelData[profileId]['pickedStock'];
-
-                    pickedProductStock.forEach(product=>{
-
-                        rabbitProfile.addStock(
-                            ProductFactory.createNew(product.id, product.qnt)
-                        );
-
-                    });
-
-                    modelStorage[profileId] = rabbitProfile;
-                }
-
-            }
-
-            return modelStorage;
         },
 
         getData(dataId){
 
+            var receivedData = ModelStoreStrategy.get(dataId),
+                model = null;
 
+            if(receivedData !== false){
 
-            return ModelStoreStrategy.get(dataId);
+                model = translateDataOnModel(receivedData);
 
+            }
 
-
+            return dataId === 'all'? model : model[dataId];
         },
 
         hasData(dataId){

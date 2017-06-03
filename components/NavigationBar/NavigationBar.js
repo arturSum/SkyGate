@@ -13,18 +13,18 @@ var NavigationBar = ()=>{
 
     var navButtonsDescriptions = [
 
-        ['/', 'Pickers List'],
-        ['/addPickerProfile', 'Add Picker Profile'],
-        ['/removePickerProfile', 'Remove Picker Profile'],
-        ['/assignStock', 'Assign stock to pickers']
+        ['/', 'Pickers List', false],
+        ['/addPickerProfile', 'Add Picker Profile', false],
+        ['/removePickerProfile', 'Remove Picker Profile', true],
+        ['/assignStock', 'Assign stock to pickers', true]
 
     ],
 
     navLinks = navButtonsDescriptions.map((singleLink, i)=>{
 
-                    var [href, description] = singleLink;
+                    var [href, description, disabled] = singleLink;
 
-                    return <li className="navButton" key={i}>
+                    return <li className={ `navButton ${disabled? 'disabled':''}` } key={i}>
 
                                 <NavLink exact to={href} activeClassName="selected">
                                     <span>{description}</span>

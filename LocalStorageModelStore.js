@@ -57,8 +57,7 @@ class LocalStorageModelStore extends ModelStoreStrategy{
             return this.model;
         }
 
-
-        return this.model.hasOwnProperty(id)? this.model[id] : false;
+        return this.model.hasOwnProperty(id)? {[id]:this.model[id]} : false;
 
     }
 

@@ -64,13 +64,13 @@ var MainBoard = ()=>{
 
                         <div className="row">
 
-                            <Route exact path="/" render={()=><KingdomPopulationList model={getModel()} pageController={pageController} />} />
+                            <Route exact path="/" render={()=><KingdomPopulationList model={getModel()} />} />
 
-                            <Route path="/addPickerProfile" render={()=><AddPickerProfile pageController={pageController} />} />
+                            <Route path="/addPickerProfile" render={(props)=><AddPickerProfile {...props} pageController={pageController} />} />
 
-                            <Route path="/removePickerProfile" render={()=><RemoveProfile pageController={pageController} profileNameList={getProfileNameList()} />} />
+                            <Route path="/removePickerProfile" render={(props)=><RemoveProfile {...props} pageController={pageController} profileNameList={getProfileNameList()} />} />
 
-                            <Route path="/assignStock" render={()=><AssignStock pageController={pageController} profileNameList={getProfileNameList()} />} />
+                            <Route path="/assignStock" render={(props)=><AssignStock {...props} pageController={pageController} profileNameList={getProfileNameList()} />} />
 
                         </div>
 
