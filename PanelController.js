@@ -9,13 +9,10 @@ import ProductFactory from './ProductFactory';
 class PanelController{
 
 
-
     createNewProfile(profileName){
 
 
         if(RabbitKingdom.profileExist(profileName)){
-
-            console.log('profile exist');
 
             return;
 
@@ -39,8 +36,6 @@ class PanelController{
         RabbitKingdom.assignNewNewProductToMember(profileName, pickedProduct);
 
     }
-
-
 
 
 

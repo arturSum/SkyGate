@@ -12,7 +12,7 @@ class LocalStorageModelStore extends ModelStoreStrategy{
 
         if(!localStorage['RabbitKingdomModel']){
 
-            localStorage['RabbitKingdomModel'] = JSON.stringify({});
+            localStorage['RabbitKingdomModel'] = JSON.stringify(new Map());
 
         }
 
@@ -22,6 +22,7 @@ class LocalStorageModelStore extends ModelStoreStrategy{
 
 
     add(id, data){
+
 
         this.model[id] = data;
 

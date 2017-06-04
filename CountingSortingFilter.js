@@ -10,7 +10,10 @@ class CountingSortingFilter extends SortingFilter{
 
 
 
-    sortData(data, productId = '#carrot'){
+    sortData(data, productId = '#carrot'){console.time('sort');
+
+
+    debugger;
 
         var singleProfileId = '',
             countedProductQntList = [],
@@ -46,6 +49,7 @@ class CountingSortingFilter extends SortingFilter{
         }
 
 
+        console.log(countedProductQntList.length);
 
         //############### SORTING ALGORITHM ################
 
@@ -122,6 +126,12 @@ class CountingSortingFilter extends SortingFilter{
 
             sortedData[sortedProductQntList[z]] = data[sortedProductQntList[z]];
         }
+
+
+        console.timeEnd('sort');
+
+        console.log('sort inside', sortedData);
+
 
         return sortedData;
     }
