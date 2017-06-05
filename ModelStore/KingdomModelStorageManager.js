@@ -1,8 +1,8 @@
 
 import LocalStorageModelStore from './LocalStorageModelStore';
 
-import RabbitFactory from './RabbitFactory';
-import ProductFactory from './ProductFactory';
+import RabbitFactory from '../RabbitProfile/RabbitFactory';
+import ProductFactory from '../Product/ProductFactory';
 
 
 
@@ -12,19 +12,17 @@ var KingdomModelStorageManager = ((ModelStoreStrategy)=>{
 
     var translateDataOnModel = data=>{
 
-        var modelStorage = {},
+        var modelStorage = [],
             rabbitProfile = null,
-            pickedProductStock = null,
-            profileId = null;
+            pickedProductStock = null;
 
+        // data = JSON.parse(data);
 
-        for(profileId in data){
-
-            if(data.hasOwnProperty(profileId)){
+        for(var [profileId, profileObj] of data){
 
                 rabbitProfile = RabbitFactory.createNewProfile(profileId);
 
-                pickedProductStock = data[profileId]['pickedStock'];
+                pickedProductStock = profileObj['pickedStock'];
 
                 pickedProductStock.forEach(product=>{
 
@@ -34,8 +32,7 @@ var KingdomModelStorageManager = ((ModelStoreStrategy)=>{
 
                 });
 
-                modelStorage[profileId] = rabbitProfile;
-            }
+                modelStorage.push(rabbitProfile);
 
         }
 
@@ -60,7 +57,10 @@ var KingdomModelStorageManager = ((ModelStoreStrategy)=>{
 
         updateData(data){
 
-            this.addData(data);
+
+
+            ModelStoreStrategy.update(data.getName(), data);
+
         },
 
         deleteData(id){
@@ -82,16 +82,23 @@ var KingdomModelStorageManager = ((ModelStoreStrategy)=>{
 
         getData(dataId){
 
-            var receivedData = ModelStoreStrategy.get(dataId),
-                model = null;
 
-            if(receivedData !== false){
+            var receivedData = JSON.parse(ModelStoreStrategy.get(dataId)),
+                model = [];
+
+            if(receivedData !== false && receivedData.length !== 0){
 
                 model = translateDataOnModel(receivedData);
 
             }
 
-            return dataId === 'all'? model : model[dataId];
+            if(dataId !== 'all'){
+
+                model = model[0];
+            }
+
+
+            return model;
         },
 
         hasData(dataId){

@@ -1,6 +1,11 @@
 
-import PanelController from './PanelController';
-import SortingFilterFactory from './SortingFilterFactory';
+import PanelController from '../../PanelController';
+import SortingFilterFactory from '../../ModelFilter/SortingFilterFactory';
+
+
+//tested profile qnt
+var testQnt = 100;
+
 
 
 var pageController = new PanelController(),
@@ -10,11 +15,14 @@ var pageController = new PanelController(),
     buildButton = null,
     buildTestProgressBar = null,
     buildTestDoneMarker = null,
+    testScore = null,
+    barBorder = null,
 
-    sortingModel = null,
+    sortedModel = null,
 
-    testQnt = 5,
     buildCounterSize = testQnt*0.1,
+    maxTestedDataLength = 20000,
+
 
     progressBarMaxLength = 100,
     progressBarStep = progressBarMaxLength*(buildCounterSize/testQnt),
@@ -24,27 +32,23 @@ var pageController = new PanelController(),
 
     model = null;
 
-
-
-
 var runTest = function(){
-
-        var deltaTime = 0;
 
         runButton.className = 'btn-disabled';
 
 
         var timeStart = performance.now();
 
-        sortingModel = sortingFilter.sortData(model);
+        sortedModel = sortingFilter.sortData(model);
 
+        var timeEnd = performance.now(),
 
-        var timeEnd = performance.now();
+            testedSizeDeltaTime = parseFloat(timeEnd - timeStart).toFixed(2),
 
-        deltaTime = timeEnd - timeStart;
+            allDeltaTime = parseFloat(testedSizeDeltaTime*(maxTestedDataLength/testQnt)).toFixed(2);
 
+        testScore.innerText = `Sorting ${testQnt} qnt time: ${testedSizeDeltaTime} millisecond. For ${maxTestedDataLength} will be ${allDeltaTime} millisecond`;
 
-        //console.log("Call to doSomething took " + deltaTime + " milliseconds.");
 
     },
 
@@ -52,6 +56,10 @@ var runTest = function(){
 
 
         buildButton.className = 'btn-disabled';
+
+        barBorder.style.width = progressBarMaxLength + 'px';
+        barBorder.style.outline = 'solid 1px blue';
+
 
         var i = 0,
 
@@ -66,7 +74,7 @@ var runTest = function(){
                             pageController.addProduct(
                                 (profileId + ''),
                                 '#carrot',
-                                Math.floor(Math.random()*10)
+                                Math.floor(Math.random()*maxTestedDataLength)
                             );
 
 
@@ -81,7 +89,7 @@ var runTest = function(){
 
                                 loop();
 
-                            }, 100);
+                            }, 0);
 
                     }
                     else{
@@ -92,15 +100,12 @@ var runTest = function(){
                         buildTestDoneMarker.style.display = 'block';
 
                         runButton.className = '';
+                        barBorder.style.outline = 'none';
 
                     }
             };
 
-
         loop();
-
-
-
 
     };
 
@@ -110,11 +115,17 @@ var runTest = function(){
 window.onload = function(){
 
 
+    localStorage['RabbitKingdomModel'] = JSON.stringify([]);
+
     runButton = document.getElementById('runTest');
     buildButton = document.getElementById('buildTest');
 
     buildTestProgressBar = document.getElementById('buildTestProgressBar');
     buildTestDoneMarker = document.getElementById('buildTestDoneMarker');
+
+    testScore = document.getElementById('testScore');
+    barBorder = document.getElementById('barBorder');
+
 
     runButton.onclick = runTest;
     buildButton.onclick = buildTest;

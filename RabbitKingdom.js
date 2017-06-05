@@ -1,7 +1,7 @@
 
-import KingdomModelStorageManager from './KingdomModelStorageManager';
+import KingdomModelStorageManager from './ModelStore/KingdomModelStorageManager';
 
-import RabbitFactory from './RabbitFactory';
+import RabbitFactory from './RabbitProfile/RabbitFactory';
 
 
 

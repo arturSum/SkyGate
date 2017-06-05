@@ -16,7 +16,7 @@ import AssignStock from './AssignStock/AssignStock';
 
 import PanelController from './../PanelController';
 
-import SortingFilterFactory from '../SortingFilterFactory';
+import SortingFilterFactory from '../ModelFilter/SortingFilterFactory';
 
 
 
@@ -34,7 +34,13 @@ var MainBoard = ()=>{
 
         getProfileNameList = ()=>{
 
-            return Object.keys(getModel());
+            var model = getModel();
+
+            return model.map(singleProfile=>{
+
+                return singleProfile.getName();
+
+            });
 
         };
 
@@ -68,7 +74,7 @@ var MainBoard = ()=>{
 
                         <div className="row">
 
-                            <Route exact path="/" render={()=><KingdomPopulationList model={sortingFilter.sortData(getModel(), '#carrot')} />} />
+                            <Route exact path="/" render={()=><KingdomPopulationList model={sortingFilter.sortData(getModel())} />} />
 
                             <Route path="/addPickerProfile" render={(props)=><AddPickerProfile {...props} pageController={pageController} />} />
 

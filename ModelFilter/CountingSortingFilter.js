@@ -10,10 +10,9 @@ class CountingSortingFilter extends SortingFilter{
 
 
 
-    sortData(data, productId = '#carrot'){console.time('sort');
+    sortData(data, productId = '#carrot'){
 
 
-    debugger;
 
         var singleProfileId = '',
             countedProductQntList = [],
@@ -22,12 +21,12 @@ class CountingSortingFilter extends SortingFilter{
             productObj = null,
             profileProductQuantity = 0;
 
+        if(data.length < 2){return data;}
 
-        for(singleProfileId in data){
 
-            if(data.hasOwnProperty(singleProfileId)){
+        for(singleProfileId of data){
 
-                productObjListInCertainProfile = data[singleProfileId].getPickedStock();
+                productObjListInCertainProfile = singleProfileId.getPickedStock();
 
                 currentProductObjNumber = productObjListInCertainProfile.length;
 
@@ -42,14 +41,14 @@ class CountingSortingFilter extends SortingFilter{
 
                 }
 
-                countedProductQntList.push(profileProductQuantity);
-            }
 
-            profileProductQuantity = 0;
+                if(profileProductQuantity < 0){ profileProductQuantity = 0; }
+
+                countedProductQntList.push(profileProductQuantity);
+
+                profileProductQuantity = 0;
         }
 
-
-        console.log(countedProductQntList.length);
 
         //############### SORTING ALGORITHM ################
 
@@ -94,10 +93,12 @@ class CountingSortingFilter extends SortingFilter{
         //-----------------------------------------------------------
 
 
-        var profileIdList = Object.keys(data),
+        var profileIdList = [...data.keys()],
             searchingValue = null,
             searchingValuePositionInSortedList,
             sortedProductQntList = [null];
+
+
 
         while(countedProductQntListLength--){
 
@@ -105,35 +106,15 @@ class CountingSortingFilter extends SortingFilter{
 
             searchingValuePositionInSortedList =  productStateList[searchingValue];
 
-            sortedProductQntList[searchingValuePositionInSortedList] = profileIdList[countedProductQntListLength];
+            sortedProductQntList[searchingValuePositionInSortedList] = data[countedProductQntListLength];
 
             productStateList[searchingValue]--;
 
         }
 
-
-
-        //########## SORTING ALGORITHM END ###########
-
-
-
         sortedProductQntList = sortedProductQntList.slice(1);
 
-        var sortedData = {},
-            sortedProductQntListLength = sortedProductQntList.length;
-
-        for(var z=0; z<sortedProductQntListLength; z++){
-
-            sortedData[sortedProductQntList[z]] = data[sortedProductQntList[z]];
-        }
-
-
-        console.timeEnd('sort');
-
-        console.log('sort inside', sortedData);
-
-
-        return sortedData;
+        return sortedProductQntList;
     }
 
 }

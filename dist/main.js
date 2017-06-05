@@ -7326,7 +7326,23 @@ module.exports = ReactNoopUpdateQueue;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Carrot__ = __webpack_require__(100);
+
+class SortingFilter {
+
+    sortData(data, productId = '#carrot') {
+        return data;
+    }
+
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (SortingFilter);
+
+/***/ }),
+/* 62 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Carrot__ = __webpack_require__(106);
 
 
 
@@ -7352,11 +7368,11 @@ var ProductFactory = (() => {
 /* harmony default export */ __webpack_exports__["a"] = (ProductFactory);
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__PickerRabbitProfile__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__PickerRabbitProfile__ = __webpack_require__(108);
 
 
 
@@ -7373,22 +7389,6 @@ var RabbitFactory = (() => {
 })();
 
 /* harmony default export */ __webpack_exports__["a"] = (RabbitFactory);
-
-/***/ }),
-/* 63 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-
-class SortingFilter {
-
-    sortData(data, productId = '#carrot') {
-        return data;
-    }
-
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (SortingFilter);
 
 /***/ }),
 /* 64 */
@@ -11109,7 +11109,7 @@ module.exports = getIteratorFn;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__RemoveProfile_RemoveProfile__ = __webpack_require__(114);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__AssignStock_AssignStock__ = __webpack_require__(111);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__PanelController__ = __webpack_require__(105);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__SortingFilterFactory__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ModelFilter_SortingFilterFactory__ = __webpack_require__(101);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__MainBoardStyle_css__ = __webpack_require__(119);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__MainBoardStyle_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__MainBoardStyle_css__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -11135,13 +11135,18 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 var MainBoard = () => {
 
                     var pageController = new __WEBPACK_IMPORTED_MODULE_8__PanelController__["a" /* default */](),
-                        sortingFilter = __WEBPACK_IMPORTED_MODULE_9__SortingFilterFactory__["a" /* default */].createNew('counting'),
+                        sortingFilter = __WEBPACK_IMPORTED_MODULE_9__ModelFilter_SortingFilterFactory__["a" /* default */].createNew('counting'),
                         getModel = () => {
                                         return pageController.getAllKingdomMembersProfile();
                     },
                         getProfileNameList = () => {
 
-                                        return Object.keys(getModel());
+                                        var model = getModel();
+
+                                        return model.map(singleProfile => {
+
+                                                            return singleProfile.getName();
+                                        });
                     };
 
                     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -11177,7 +11182,7 @@ var MainBoard = () => {
                                                                                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                                                                                                         'div',
                                                                                                                         { className: 'row' },
-                                                                                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Route */], { exact: true, path: '/', render: () => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__KingdomPopulationList_KingdomPopulationList__["a" /* default */], { model: sortingFilter.sortData(getModel(), '#carrot') }) }),
+                                                                                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Route */], { exact: true, path: '/', render: () => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__KingdomPopulationList_KingdomPopulationList__["a" /* default */], { model: sortingFilter.sortData(getModel()) }) }),
                                                                                                                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Route */], { path: '/addPickerProfile', render: props => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__AddPickerProfile_AddPickerProfile__["a" /* default */], _extends({}, props, { pageController: pageController })) }),
                                                                                                                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Route */], { path: '/removePickerProfile', render: props => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__RemoveProfile_RemoveProfile__["a" /* default */], _extends({}, props, { pageController: pageController, profileNameList: getProfileNameList() })) }),
                                                                                                                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Route */], { path: '/assignStock', render: props => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__AssignStock_AssignStock__["a" /* default */], _extends({}, props, { pageController: pageController, profileNameList: getProfileNameList() })) })
@@ -11205,38 +11210,7 @@ module.exports = __webpack_require__(158);
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-class Carrot {
-
-    constructor(id, carrotQnt) {
-
-        this.id = id;
-        this.qnt = carrotQnt;
-
-        this.description = 'Carrot';
-    }
-
-    getId() {
-        return this.id;
-    }
-    getQnt() {
-        return this.qnt;
-    }
-    getDescription() {
-        return this.description;
-    }
-
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (Carrot);
-
-/***/ }),
-/* 101 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__SortingFilter__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__SortingFilter__ = __webpack_require__(61);
 
 
 
@@ -11248,8 +11222,6 @@ class CountingSortingFilter extends __WEBPACK_IMPORTED_MODULE_0__SortingFilter__
 
         sortData(data, productId = '#carrot') {
 
-                console.time('sort');
-
                 var singleProfileId = '',
                     countedProductQntList = [],
                     productObjListInCertainProfile = [],
@@ -11257,31 +11229,36 @@ class CountingSortingFilter extends __WEBPACK_IMPORTED_MODULE_0__SortingFilter__
                     productObj = null,
                     profileProductQuantity = 0;
 
-                for (singleProfileId in data) {
+                if (data.length < 2) {
+                        return data;
+                }
 
-                        if (data.hasOwnProperty(singleProfileId)) {
+                for (singleProfileId of data) {
 
-                                productObjListInCertainProfile = data[singleProfileId].getPickedStock();
+                        productObjListInCertainProfile = singleProfileId.getPickedStock();
 
-                                currentProductObjNumber = productObjListInCertainProfile.length;
+                        currentProductObjNumber = productObjListInCertainProfile.length;
 
-                                while (currentProductObjNumber--) {
+                        while (currentProductObjNumber--) {
 
-                                        productObj = productObjListInCertainProfile[currentProductObjNumber];
+                                productObj = productObjListInCertainProfile[currentProductObjNumber];
 
-                                        if (productObj.getId() === productId) {
+                                if (productObj.getId() === productId) {
 
-                                                profileProductQuantity = +productObj.getQnt();
-                                        }
+                                        profileProductQuantity = +productObj.getQnt();
                                 }
-
-                                countedProductQntList.push(profileProductQuantity);
                         }
+
+                        if (profileProductQuantity < 0) {
+                                profileProductQuantity = 0;
+                        }
+
+                        countedProductQntList.push(profileProductQuantity);
 
                         profileProductQuantity = 0;
                 }
 
-                //########## POCZATEK ALGORYTMU SORTOWANIA ###########
+                //############### SORTING ALGORITHM ################
 
 
                 var maxProductQnt = Math.max(...countedProductQntList),
@@ -11319,7 +11296,7 @@ class CountingSortingFilter extends __WEBPACK_IMPORTED_MODULE_0__SortingFilter__
                 //-----------------------------------------------------------
 
 
-                var profileIdList = Object.keys(data),
+                var profileIdList = [...data.keys()],
                     searchingValue = null,
                     searchingValuePositionInSortedList,
                     sortedProductQntList = [null];
@@ -11330,27 +11307,14 @@ class CountingSortingFilter extends __WEBPACK_IMPORTED_MODULE_0__SortingFilter__
 
                         searchingValuePositionInSortedList = productStateList[searchingValue];
 
-                        sortedProductQntList[searchingValuePositionInSortedList] = profileIdList[countedProductQntListLength];
+                        sortedProductQntList[searchingValuePositionInSortedList] = data[countedProductQntListLength];
 
                         productStateList[searchingValue]--;
                 }
 
-                //########## KONIEC ALGORYTMU SORTOWANIA ###########
-
-
                 sortedProductQntList = sortedProductQntList.slice(1);
 
-                var sortedData = {},
-                    sortedProductQntListLength = sortedProductQntList.length;
-
-                for (var z = 0; z < sortedProductQntListLength; z++) {
-
-                        sortedData[sortedProductQntList[z]] = data[sortedProductQntList[z]];
-                }
-
-                console.timeEnd('sort');
-
-                return sortedData;
+                return sortedProductQntList;
         }
 
 }
@@ -11358,13 +11322,43 @@ class CountingSortingFilter extends __WEBPACK_IMPORTED_MODULE_0__SortingFilter__
 /* harmony default export */ __webpack_exports__["a"] = (CountingSortingFilter);
 
 /***/ }),
+/* 101 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__SortingFilter__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__CountingSortingFilter__ = __webpack_require__(100);
+
+
+
+
+var SortingFilterFactory = {
+
+    createNew(methodId = '') {
+
+        switch (methodId) {
+
+            case 'counting':
+                return new __WEBPACK_IMPORTED_MODULE_1__CountingSortingFilter__["a" /* default */]();
+
+            default:
+                return new __WEBPACK_IMPORTED_MODULE_0__SortingFilter__["a" /* default */]();
+
+        }
+    }
+
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (SortingFilterFactory);
+
+/***/ }),
 /* 102 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__LocalStorageModelStore__ = __webpack_require__(103);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__RabbitFactory__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ProductFactory__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__RabbitProfile_RabbitFactory__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Product_ProductFactory__ = __webpack_require__(62);
 
 
 
@@ -11375,26 +11369,24 @@ var KingdomModelStorageManager = (ModelStoreStrategy => {
 
         var translateDataOnModel = data => {
 
-                var modelStorage = {},
+                var modelStorage = [],
                     rabbitProfile = null,
-                    pickedProductStock = null,
-                    profileId = null;
+                    pickedProductStock = null;
 
-                for (profileId in data) {
+                // data = JSON.parse(data);
 
-                        if (data.hasOwnProperty(profileId)) {
+                for (var [profileId, profileObj] of data) {
 
-                                rabbitProfile = __WEBPACK_IMPORTED_MODULE_1__RabbitFactory__["a" /* default */].createNewProfile(profileId);
+                        rabbitProfile = __WEBPACK_IMPORTED_MODULE_1__RabbitProfile_RabbitFactory__["a" /* default */].createNewProfile(profileId);
 
-                                pickedProductStock = data[profileId]['pickedStock'];
+                        pickedProductStock = profileObj['pickedStock'];
 
-                                pickedProductStock.forEach(product => {
+                        pickedProductStock.forEach(product => {
 
-                                        rabbitProfile.addStock(__WEBPACK_IMPORTED_MODULE_2__ProductFactory__["a" /* default */].createNew(product.id, product.qnt));
-                                });
+                                rabbitProfile.addStock(__WEBPACK_IMPORTED_MODULE_2__Product_ProductFactory__["a" /* default */].createNew(product.id, product.qnt));
+                        });
 
-                                modelStorage[profileId] = rabbitProfile;
-                        }
+                        modelStorage.push(rabbitProfile);
                 }
 
                 return modelStorage;
@@ -11411,7 +11403,7 @@ var KingdomModelStorageManager = (ModelStoreStrategy => {
 
                 updateData(data) {
 
-                        this.addData(data);
+                        ModelStoreStrategy.update(data.getName(), data);
                 },
 
                 deleteData(id) {
@@ -11429,15 +11421,20 @@ var KingdomModelStorageManager = (ModelStoreStrategy => {
 
                 getData(dataId) {
 
-                        var receivedData = ModelStoreStrategy.get(dataId),
-                            model = null;
+                        var receivedData = JSON.parse(ModelStoreStrategy.get(dataId)),
+                            model = [];
 
-                        if (receivedData !== false) {
+                        if (receivedData !== false && receivedData.length !== 0) {
 
                                 model = translateDataOnModel(receivedData);
                         }
 
-                        return dataId === 'all' ? model : model[dataId];
+                        if (dataId !== 'all') {
+
+                                model = model[0];
+                        }
+
+                        return model;
                 },
 
                 hasData(dataId) {
@@ -11462,58 +11459,69 @@ var KingdomModelStorageManager = (ModelStoreStrategy => {
 
 class LocalStorageModelStore extends __WEBPACK_IMPORTED_MODULE_0__ModelStoreStrategy__["a" /* default */] {
 
-    constructor() {
+        constructor() {
 
-        super();
+                super();
 
-        if (!localStorage['RabbitKingdomModel']) {
+                if (!localStorage['RabbitKingdomModel']) {
 
-            localStorage['RabbitKingdomModel'] = JSON.stringify({});
+                        localStorage['RabbitKingdomModel'] = JSON.stringify([]);
+                }
+
+                this.model = JSON.parse(localStorage['RabbitKingdomModel']);
         }
 
-        this.model = JSON.parse(localStorage['RabbitKingdomModel']);
-    }
+        add(id, data) {
 
-    add(id, data) {
+                this.model.push([id, data]);
 
-        this.model[id] = data;
-
-        this.save();
-    }
-
-    update(dataId, data) {
-
-        this.model[dataId] = data;
-
-        this.save();
-    }
-
-    delete(dataId) {
-
-        if (this.model.hasOwnProperty(dataId)) {
-
-            delete this.model[dataId];
-
-            this.save();
-        }
-    }
-
-    get(id = 'all') {
-
-        if (id === 'all') {
-
-            return this.model;
+                this.save();
         }
 
-        return this.model.hasOwnProperty(id) ? { [id]: this.model[id] } : false;
-    }
+        update(dataId, data) {
 
-    //--------------------------
+                this.delete(dataId);
 
-    save() {
+                this.add(dataId, data);
+        }
 
-        localStorage['RabbitKingdomModel'] = JSON.stringify(this.model);
-    }
+        delete(dataId) {
+
+                this.model.forEach((singleData, index) => {
+
+                        if (singleData[0] === dataId) {
+
+                                this.model.splice(index, 1);
+                        }
+                });
+
+                this.save();
+        }
+
+        get(id = 'all') {
+
+                if (id === 'all') {
+
+                        return JSON.stringify(this.model);
+                }
+
+                for (var singleData of this.model) {
+
+                        if (singleData[0] === id) {
+
+                                return JSON.stringify([singleData]);
+                        }
+                }
+
+                return false;
+        }
+
+        //--------------------------
+
+        save() {
+
+                localStorage['RabbitKingdomModel'] = JSON.stringify(this.model);
+        }
 
 }
 
@@ -11544,7 +11552,7 @@ class ModelStoreStrategy {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__RabbitKingdom__ = __webpack_require__(107);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ProductFactory__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Product_ProductFactory__ = __webpack_require__(62);
 
 
 
@@ -11555,8 +11563,6 @@ class PanelController {
     createNewProfile(profileName) {
 
         if (__WEBPACK_IMPORTED_MODULE_1__RabbitKingdom__["a" /* default */].profileExist(profileName)) {
-
-            console.log('profile exist');
 
             return;
         }
@@ -11571,7 +11577,7 @@ class PanelController {
 
     addProduct(profileName, productId, quantity) {
 
-        var pickedProduct = __WEBPACK_IMPORTED_MODULE_2__ProductFactory__["a" /* default */].createNew(productId, quantity);
+        var pickedProduct = __WEBPACK_IMPORTED_MODULE_2__Product_ProductFactory__["a" /* default */].createNew(productId, quantity);
 
         __WEBPACK_IMPORTED_MODULE_1__RabbitKingdom__["a" /* default */].assignNewNewProductToMember(profileName, pickedProduct);
     }
@@ -11590,7 +11596,95 @@ class PanelController {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__RabbitProfile__ = __webpack_require__(108);
+
+
+class Carrot {
+
+    constructor(id, carrotQnt) {
+
+        this.id = id;
+        this.qnt = carrotQnt;
+
+        this.description = 'Carrot';
+    }
+
+    getId() {
+        return this.id;
+    }
+    getQnt() {
+        return this.qnt;
+    }
+    getDescription() {
+        return this.description;
+    }
+
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (Carrot);
+
+/***/ }),
+/* 107 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ModelStore_KingdomModelStorageManager__ = __webpack_require__(102);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__RabbitProfile_RabbitFactory__ = __webpack_require__(63);
+
+
+
+
+
+var RabbitKingdom = (() => {
+
+        return {
+
+                addNewMember(profileName) {
+
+                        var rabbitProfile = __WEBPACK_IMPORTED_MODULE_1__RabbitProfile_RabbitFactory__["a" /* default */].createNewProfile(profileName);
+
+                        __WEBPACK_IMPORTED_MODULE_0__ModelStore_KingdomModelStorageManager__["a" /* default */].addData(rabbitProfile);
+                },
+
+                removeMember(profileName) {
+
+                        __WEBPACK_IMPORTED_MODULE_0__ModelStore_KingdomModelStorageManager__["a" /* default */].deleteData(profileName);
+                },
+
+                assignNewNewProductToMember(profileName, product) {
+
+                        var memberProfile = __WEBPACK_IMPORTED_MODULE_0__ModelStore_KingdomModelStorageManager__["a" /* default */].getData(profileName);
+
+                        memberProfile.addStock(product);
+
+                        __WEBPACK_IMPORTED_MODULE_0__ModelStore_KingdomModelStorageManager__["a" /* default */].updateData(memberProfile);
+                },
+
+                profileExist(profileName) {
+
+                        __WEBPACK_IMPORTED_MODULE_0__ModelStore_KingdomModelStorageManager__["a" /* default */].hasData(profileName);
+                },
+
+                getSingleWorkerInfo(rabbitProfileId) {
+
+                        return __WEBPACK_IMPORTED_MODULE_0__ModelStore_KingdomModelStorageManager__["a" /* default */].getData(rabbitProfileId);
+                },
+
+                getCurrentMemberAvailableList() {
+
+                        return __WEBPACK_IMPORTED_MODULE_0__ModelStore_KingdomModelStorageManager__["a" /* default */].getAllData();
+                }
+
+        };
+})();
+
+/* harmony default export */ __webpack_exports__["a"] = (RabbitKingdom);
+
+/***/ }),
+/* 108 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__RabbitProfile__ = __webpack_require__(109);
 
 
 
@@ -11623,64 +11717,7 @@ class PickerRabbitProfile extends __WEBPACK_IMPORTED_MODULE_0__RabbitProfile__["
 /* harmony default export */ __webpack_exports__["a"] = (PickerRabbitProfile);
 
 /***/ }),
-/* 107 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__KingdomModelStorageManager__ = __webpack_require__(102);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__RabbitFactory__ = __webpack_require__(62);
-
-
-
-
-
-var RabbitKingdom = (() => {
-
-        return {
-
-                addNewMember(profileName) {
-
-                        var rabbitProfile = __WEBPACK_IMPORTED_MODULE_1__RabbitFactory__["a" /* default */].createNewProfile(profileName);
-
-                        __WEBPACK_IMPORTED_MODULE_0__KingdomModelStorageManager__["a" /* default */].addData(rabbitProfile);
-                },
-
-                removeMember(profileName) {
-
-                        __WEBPACK_IMPORTED_MODULE_0__KingdomModelStorageManager__["a" /* default */].deleteData(profileName);
-                },
-
-                assignNewNewProductToMember(profileName, product) {
-
-                        var memberProfile = __WEBPACK_IMPORTED_MODULE_0__KingdomModelStorageManager__["a" /* default */].getData(profileName);
-
-                        memberProfile.addStock(product);
-
-                        __WEBPACK_IMPORTED_MODULE_0__KingdomModelStorageManager__["a" /* default */].updateData(memberProfile);
-                },
-
-                profileExist(profileName) {
-
-                        __WEBPACK_IMPORTED_MODULE_0__KingdomModelStorageManager__["a" /* default */].hasData(profileName);
-                },
-
-                getSingleWorkerInfo(rabbitProfileId) {
-
-                        return __WEBPACK_IMPORTED_MODULE_0__KingdomModelStorageManager__["a" /* default */].getData(rabbitProfileId);
-                },
-
-                getCurrentMemberAvailableList() {
-
-                        return __WEBPACK_IMPORTED_MODULE_0__KingdomModelStorageManager__["a" /* default */].getAllData();
-                }
-
-        };
-})();
-
-/* harmony default export */ __webpack_exports__["a"] = (RabbitKingdom);
-
-/***/ }),
-/* 108 */
+/* 109 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -11701,36 +11738,6 @@ class RabbitProfile {
 }
 
 /* harmony default export */ __webpack_exports__["a"] = (RabbitProfile);
-
-/***/ }),
-/* 109 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__SortingFilter__ = __webpack_require__(63);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__CountingSortingFilter__ = __webpack_require__(101);
-
-
-
-
-var SortingFilterFactory = {
-
-    createNew(methodId = '') {
-
-        switch (methodId) {
-
-            case 'counting':
-                return new __WEBPACK_IMPORTED_MODULE_1__CountingSortingFilter__["a" /* default */]();
-
-            default:
-                return new __WEBPACK_IMPORTED_MODULE_0__SortingFilter__["a" /* default */]();
-
-        }
-    }
-
-};
-
-/* harmony default export */ __webpack_exports__["a"] = (SortingFilterFactory);
 
 /***/ }),
 /* 110 */
@@ -12128,6 +12135,10 @@ var KingdomPopulationList = props => {
             }
         }
 
+        if (pickedQnt < 0) {
+            pickedQnt = 0;
+        }
+
         return pickedQnt;
     },
         makeTableBody = profileList => {
@@ -12136,37 +12147,34 @@ var KingdomPopulationList = props => {
             tableRowList = [],
             keyCounter = 1;
 
-        for (var profile in profileList) {
+        for (var profile of profileList) {
 
-            if (profileList.hasOwnProperty(profile)) {
-
-                tableRowList.push(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'tr',
-                    { key: keyCounter++ },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'th',
-                        null,
-                        tableCounter++
-                    ),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'th',
-                        null,
-                        profileList[profile].getName()
-                    ),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'th',
-                        null,
-                        countPickedStock(profileList[profile].getPickedStock(), '#carrot')
-                    )
-                ));
-            }
+            tableRowList.push(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'tr',
+                { key: keyCounter++ },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'th',
+                    null,
+                    tableCounter++
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'th',
+                    null,
+                    profile.getName()
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'th',
+                    null,
+                    countPickedStock(profile.getPickedStock(), '#carrot')
+                )
+            ));
         }
 
         return tableRowList;
     },
         makeContext = data => {
 
-        if (Object.keys(data).length === 0) {
+        if (data.length === 0) {
 
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'h3',

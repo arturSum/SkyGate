@@ -2580,6 +2580,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
+//tested profile qnt
+var testQnt = 100;
+
 var pageController = new __WEBPACK_IMPORTED_MODULE_0__PanelController__["a" /* default */](),
     sortingFilter = __WEBPACK_IMPORTED_MODULE_1__SortingFilterFactory__["a" /* default */].createNew('counting'),
     runButton = null,
@@ -2589,7 +2592,6 @@ var pageController = new __WEBPACK_IMPORTED_MODULE_0__PanelController__["a" /* d
     testScore = null,
     barBorder = null,
     sortedModel = null,
-    testQnt = 100,
     buildCounterSize = testQnt * 0.1,
     maxTestedDataLength = 20000,
     progressBarMaxLength = 100,

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sorting Test</title>
+
+    <script src="../../dist/sortingPerformanceTest.js"></script>
+
+
+    <style type="text/css">
+
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        .container{
+
+            height: 30vh;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items:center;
+        }
+
+        #runTest, #buildTest{
+
+            width:100px;
+            height: 50px;
+            margin-left: 10px;
+        }
+
+        #buildTestProgressBar{
+
+            display: block;
+            height: 20px;
+            background-color: blue;
+
+        }
+
+        .btn-disabled{
+
+            cursor: not-allowed;
+            pointer-events: none;
+            opacity: 0.3;
+        }
+
+        .progressBarContainer{
+
+            display: flex;
+            margin-top: 30px;
+        }
+
+        .buttons{
+            margin-top: 30px;
+        }
+
+        .progressBarContainer .progress{
+
+            margin-left: 5px;
+        }
+
+        #barBorder{
+
+            display: block;
+        }
+
+        #testScore{
+
+            margin-top: 20px;
+
+        }
+
+
+    </style>
+
+
+</head>
+<body>
+
+
+    <div class="container">
+
+        <h4>1: Push Build Test Data button, wait for loading data</h4>
+        <h4>2: Push Run Test for check sorting time</h4>
+
+
+        <div class="buttons">
+
+            <button id="buildTest">Build Test Data</button>
+            <button id="runTest" class="btn-disabled">Run Test</button>
+
+        </div>
+
+        <div class="progressBarContainer">
+
+            <p>Loading data:</p>
+
+            <div class="progress">
+
+                <span id="buildTestDoneMarker" style="display: none">Done</span>
+
+                <span id="barBorder">
+                    <span id="buildTestProgressBar" style="width: 0;"></span>
+                </span>
+
+            </div>
+
+        </div>
+
+        <h3 id="testScore"></h3>
+
+    </div>
+
+
+</body>
+</html>

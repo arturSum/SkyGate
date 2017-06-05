@@ -4,10 +4,10 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
 
-    entry: './test.js',
+    entry: './tests/sortingPerformance/test.js',
 
     output: {
-        filename: 'test.js',
+        filename: 'sortingPerformanceTest.js',
         path: __dirname + "/dist",
     },
 

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import RabbitKingdom from './RabbitKingdom';
-import ProductFactory from './ProductFactory';
+import ProductFactory from './Product/ProductFactory';
 
 
 

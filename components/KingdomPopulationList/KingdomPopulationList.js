@@ -11,9 +11,6 @@ var KingdomPopulationList = (props)=>{
     } = props,
 
 
-
-
-
     countPickedStock = (productList, productId)=>{
 
         var pickedQnt = 0,
@@ -29,8 +26,10 @@ var KingdomPopulationList = (props)=>{
             }
         }
 
-        return pickedQnt;
 
+        if(pickedQnt < 0){ pickedQnt = 0; }
+
+        return pickedQnt;
     },
 
 
@@ -42,10 +41,7 @@ var KingdomPopulationList = (props)=>{
             keyCounter = 1;
 
 
-        for(var profile in profileList){
-
-
-            if(profileList.hasOwnProperty(profile)){
+        for(var profile of profileList){
 
 
                 tableRowList.push(
@@ -53,16 +49,12 @@ var KingdomPopulationList = (props)=>{
                     <tr key={keyCounter++}>
 
                         <th>{tableCounter++}</th>
-                        <th>{profileList[profile].getName()}</th>
-                        <th>{countPickedStock(profileList[profile].getPickedStock(), '#carrot')}</th>
+                        <th>{profile.getName()}</th>
+                        <th>{countPickedStock(profile.getPickedStock(), '#carrot')}</th>
 
                     </tr>
 
                 );
-
-
-            }
-
 
         }
 
@@ -72,10 +64,9 @@ var KingdomPopulationList = (props)=>{
     },
 
 
-    makeContext = (data)=>{
+    makeContext = data=>{
 
-
-        if(Object.keys(data).length === 0){
+        if(data.length === 0){
 
             return <h3 className="nothingToShow">Nothing to show</h3>
         }
