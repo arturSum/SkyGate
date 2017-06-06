@@ -15,9 +15,15 @@ class Carrot{
     getId(){
         return this.id;
     }
+
     getQnt(){
         return this.qnt;
     }
+
+    setQnt(value){
+        this.qnt = value;
+    }
+
     getDescription(){
         return this.description;
     }

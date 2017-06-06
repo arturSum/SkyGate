@@ -140,13 +140,29 @@ var AssignStock = (props)=>{
 
 
                     <button className="btn btn-primary acceptAssign"
+
                             onClick={e=>{
 
-                                pageController.addProduct(
-                                    selectedProfileNode.children[selectedProfileNode.selectedIndex].value,
-                                    selectedProductNode.children[selectedProductNode.selectedIndex].value,
-                                    selectedQnt
-                                );
+
+                                if(selectedQnt >0){
+
+                                    pageController.addProduct(
+                                        selectedProfileNode.children[selectedProfileNode.selectedIndex].value,
+                                        selectedProductNode.children[selectedProductNode.selectedIndex].value,
+                                        selectedQnt
+                                    );
+
+                                }
+                                else{
+
+                                    pageController.removeProduct(
+                                        selectedProfileNode.children[selectedProfileNode.selectedIndex].value,
+                                        selectedProductNode.children[selectedProductNode.selectedIndex].value,
+                                        selectedQnt
+                                    );
+
+                                }
+
 
                                 history.push('/');
 

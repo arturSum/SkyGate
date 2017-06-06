@@ -12,25 +12,46 @@ class PickerRabbitProfile extends RabbitProfile{
 
     }
 
-
     getPickedStock(){
 
         return this.pickedStock;
     }
 
-
     addStock(product){
 
         this.pickedStock.push(product);
-
     }
 
-    removeStock(product){
+    removeStock(productId, qnt){
 
-        this.addStock(product);
+        var productQnt,
+            valueAfterCount;
+
+
+        for(var product of this.pickedStock){
+
+            if(product.getId() === productId){
+
+                productQnt = product.getQnt();
+
+                valueAfterCount = productQnt + qnt;
+
+                if( valueAfterCount < 0 ){
+
+                    this.pickedStock.shift();
+
+                }
+                else{
+
+                    product.setQnt(valueAfterCount);
+                    break;
+                }
+
+            }
+
+        }
 
     }
-
 
 }
 

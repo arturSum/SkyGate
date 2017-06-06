@@ -26,9 +26,6 @@ var KingdomPopulationList = (props)=>{
             }
         }
 
-
-        if(pickedQnt < 0){ pickedQnt = 0; }
-
         return pickedQnt;
     },
 

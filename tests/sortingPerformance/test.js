@@ -4,7 +4,7 @@ import SortingFilterFactory from '../../ModelFilter/SortingFilterFactory';
 
 
 //tested profile qnt
-var testQnt = 100;
+var testQnt = 1000;
 
 
 
@@ -36,7 +36,6 @@ var runTest = function(){
 
         runButton.className = 'btn-disabled';
 
-
         var timeStart = performance.now();
 
         sortedModel = sortingFilter.sortData(model);
@@ -48,7 +47,6 @@ var runTest = function(){
             allDeltaTime = parseFloat(testedSizeDeltaTime*(maxTestedDataLength/testQnt)).toFixed(2);
 
         testScore.innerText = `Sorting ${testQnt} qnt time: ${testedSizeDeltaTime} millisecond. For ${maxTestedDataLength} will be ${allDeltaTime} millisecond`;
-
 
     },
 
@@ -89,7 +87,7 @@ var runTest = function(){
 
                                 loop();
 
-                            }, 0);
+                            }, 100);
 
                     }
                     else{

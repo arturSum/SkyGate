@@ -41,9 +41,6 @@ class CountingSortingFilter extends SortingFilter{
 
                 }
 
-
-                if(profileProductQuantity < 0){ profileProductQuantity = 0; }
-
                 countedProductQntList.push(profileProductQuantity);
 
                 profileProductQuantity = 0;

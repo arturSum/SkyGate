@@ -25,9 +25,17 @@ var RabbitKingdom = (()=>{
 
            KingdomModelStorageManager.deleteData(profileName);
 
-
         },
 
+        removeProductFromMemberProfile(profileName, productId, quantity){
+
+            var memberProfile = KingdomModelStorageManager.getData(profileName);
+
+            memberProfile.removeStock(productId, quantity);
+
+            KingdomModelStorageManager.updateData(memberProfile);
+
+        },
 
 
         assignNewNewProductToMember(profileName, product){

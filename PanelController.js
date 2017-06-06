@@ -29,6 +29,13 @@ class PanelController{
     }
 
 
+    removeProduct(profileName, productId, quantity){
+
+        RabbitKingdom.removeProductFromMemberProfile(profileName, productId, quantity);
+
+    }
+
+
     addProduct(profileName, productId, quantity){
 
         var pickedProduct = ProductFactory.createNew(productId, quantity);

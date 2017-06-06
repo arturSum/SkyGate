@@ -57,8 +57,6 @@ var KingdomModelStorageManager = ((ModelStoreStrategy)=>{
 
         updateData(data){
 
-
-
             ModelStoreStrategy.update(data.getName(), data);
 
         },
