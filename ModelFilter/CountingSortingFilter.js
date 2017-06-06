@@ -13,16 +13,12 @@ class CountingSortingFilter extends SortingFilter{
     sortData(data, productId = '#carrot'){
 
 
-
         var singleProfileId = '',
             countedProductQntList = [],
             productObjListInCertainProfile = [],
             currentProductObjNumber = 0,
             productObj = null,
             profileProductQuantity = 0;
-
-        if(data.length < 2){return data;}
-
 
         for(singleProfileId of data){
 

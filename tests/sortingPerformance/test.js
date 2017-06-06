@@ -4,7 +4,7 @@ import SortingFilterFactory from '../../ModelFilter/SortingFilterFactory';
 
 
 //tested profile qnt
-var testQnt = 1000;
+var testQnt = 100;
 
 
 
