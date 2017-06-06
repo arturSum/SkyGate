@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
-    "buildPerfTest" : "webpack --config webpack.config.sort.perf.test.js",
+    "buildPerfTest": "webpack --config webpack.config.sort.perf.test.js",
+    "buildUnitTest":  "webpack --config webpack.config.unit.test.js",
 
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -25,6 +26,11 @@
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.2",
     "extract-text-webpack-plugin": "^2.1.0",
+    "jasmine": "^2.6.0",
+    "karma": "^1.7.0",
+    "karma-chrome-launcher": "^2.1.1",
+    "karma-jasmine": "^1.1.0",
+    "karma-mocha-reporter": "^2.2.3",
     "url-loader": "^0.5.8",
     "webpack": "^2.6.0"
   }
