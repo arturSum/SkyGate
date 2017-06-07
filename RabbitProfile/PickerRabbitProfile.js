@@ -24,11 +24,17 @@ class PickerRabbitProfile extends RabbitProfile{
 
     removeStock(productId, qnt){
 
-        var productQnt,
-            valueAfterCount;
+        var productQnt = 0,
+            product,
+            valueAfterCount = 0,
+            pickedStockLength = this.pickedStock.length,
+
+            pickedStockCopy = this.pickedStock.slice();
 
 
-        for(var product of this.pickedStock){
+        for(var i=0; i<pickedStockLength; i++){
+
+            product = pickedStockCopy[i];
 
             if(product.getId() === productId){
 
@@ -39,17 +45,19 @@ class PickerRabbitProfile extends RabbitProfile{
                 if( valueAfterCount < 0 ){
 
                     this.pickedStock.shift();
+                    qnt += productQnt;
 
                 }
                 else{
 
-                    product.setQnt(valueAfterCount);
+                    this.pickedStock[i].setQnt(valueAfterCount);
                     break;
                 }
 
             }
 
         }
+
 
     }
 

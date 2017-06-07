@@ -5,6 +5,7 @@ class ModelStoreStrategy{
     update(){}
     add(){}
     delete(){}
+    deleteAll(){}
 
 }
 

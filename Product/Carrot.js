@@ -1,33 +1,15 @@
+import Product from './Product';
 
 
-
-class Carrot{
+class Carrot extends Product{
 
     constructor(id, carrotQnt){
 
-        this.id = id;
-        this.qnt = carrotQnt;
+        super(id, carrotQnt);
 
         this.description = 'Carrot';
 
     }
-
-    getId(){
-        return this.id;
-    }
-
-    getQnt(){
-        return this.qnt;
-    }
-
-    setQnt(value){
-        this.qnt = value;
-    }
-
-    getDescription(){
-        return this.description;
-    }
-
 
 }
 

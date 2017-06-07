@@ -74,7 +74,7 @@ var MainBoard = ()=>{
 
                         <div className="row">
 
-                            <Route exact path="/" render={()=><KingdomPopulationList model={sortingFilter.sortData(getModel())} />} />
+                            <Route exact path="/" render={()=><KingdomPopulationList model={sortingFilter.sortData(getModel(), 'desc')} />} />
 
                             <Route path="/addPickerProfile" render={(props)=><AddPickerProfile {...props} pageController={pageController} />} />
 

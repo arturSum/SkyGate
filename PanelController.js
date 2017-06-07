@@ -11,15 +11,13 @@ class PanelController{
 
     createNewProfile(profileName){
 
+        profileName = profileName.trim();
 
-        if(RabbitKingdom.profileExist(profileName)){
-
+        if(profileName === '' || RabbitKingdom.profileExist(profileName)){
             return;
-
         }
 
         RabbitKingdom.addNewMember(profileName);
-
     }
 
     removeExistingProfile(profileName){

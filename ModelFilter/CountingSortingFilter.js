@@ -10,7 +10,7 @@ class CountingSortingFilter extends SortingFilter{
 
 
 
-    sortData(data, productId = '#carrot'){
+    sortData(data, direction = 'asc', productId = '#carrot'){
 
 
         var singleProfileId = '',
@@ -107,7 +107,7 @@ class CountingSortingFilter extends SortingFilter{
 
         sortedProductQntList = sortedProductQntList.slice(1);
 
-        return sortedProductQntList;
+        return direction === 'asc'? sortedProductQntList : sortedProductQntList.reverse();
     }
 
 }

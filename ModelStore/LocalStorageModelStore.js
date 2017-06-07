@@ -11,15 +11,11 @@ class LocalStorageModelStore extends ModelStoreStrategy{
         super();
 
 
-
-
-
         if(!localStorage['RabbitKingdomModel']){
 
             localStorage['RabbitKingdomModel'] = JSON.stringify([]);
 
         }
-
 
         this.model = JSON.parse(localStorage['RabbitKingdomModel']);
 
@@ -80,6 +76,11 @@ class LocalStorageModelStore extends ModelStoreStrategy{
 
     }
 
+    deleteAll(){
+
+        this.model = [];
+        this.save();
+    }
 
 
     //--------------------------
@@ -89,8 +90,6 @@ class LocalStorageModelStore extends ModelStoreStrategy{
         localStorage['RabbitKingdomModel'] = JSON.stringify(this.model);
 
     }
-
-
 
 }
 

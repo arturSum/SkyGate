@@ -16,7 +16,6 @@ var KingdomModelStorageManager = ((ModelStoreStrategy)=>{
             rabbitProfile = null,
             pickedProductStock = null;
 
-        // data = JSON.parse(data);
 
         for(var [profileId, profileObj] of data){
 
