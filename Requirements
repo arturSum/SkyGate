@@ -1,0 +1,69 @@
+Treść:
+W Królestwie Zajęcy powstał pomysł, aby lepiej planować coroczne zbiory marchewek.
+W tym celu każdy zając miał przy użyciu aplikacji internetowej móc łatwo wpisać swoje zbiory,
+utworzyć swój profil i móc w łatwy sposób określić ile marchewek oddał do marchewkowego skarbca.
+Docelowo system mógłby posłużyć również do zbiorów kapusty czy innych upraw.
+
+Aby jednak przekonać Króla do sfinansowania tego pomysłu, Pan Zajączkowski postanowił napisać
+prototyp, zawierający bardzo uproszczoną wersję, która pozwala na szybkie wyświetlenie
+listy wszystkich mieszkańców Królestwa (ok 20000 mieszkanów) oraz ile marchewek
+każdy z nich oddał do wspólnego skarbca.
+
+10% najbardziej pracowitych zajęcy miało dostąpić zaszczytu pracy na uprawach królewskich, stąd
+aby wyłonić najlepszych, pojawiła się potrzeba pokazania wyników w formie posortowanej tabeli.
+
+A oto Twoje zadanie:
+
+Część front-end (dla osób aplikujących na staże JS)
+Korzystając z reactjs, angularjs, vuejs lub vanillajs napisz marchewkowy panel admina, w którym:
+- będzie można utworzyć lub usunąć profil zająca (profil to imię oraz liczba marchewek)
+- dla każdego profilu będzie można dodawać ilość marchewek (liczba całkowita, nieujemna)
+- aby łatwiej dodawać lub odejmować ilość marchewek, będą przyciski +1, -1, +2, -2, +5, -5, +10, -10, +20, -20, +50, -50 etc. dzięki którym każdy z zajęcy będzie mógł szybciej dodawać swoje marchewki
+- aby ograniczyć pokusę nieuczciwej rywalizacji nie powinno się móc edytować ilości marchewek wprost (stąd jedyna opcja zmiany licznika to jeden z przycisków + lub -)
+- lista zajęcy będzie wyświetlona w formie tabeli
+- tabela będzie sortowana w czasie real-time
+- do sortowania tabeli użyty zostanie algorytm counting sort (własna implementacja, bez korzystania z bibliotek)
+- zadanie powinno zawierać testy automatyczne (jednostkowe, integracyjne) tam gdzie to jest niezbędne
+- aby sprawdzić, czy sortowanie jest wystarczająco szybkie, testy wydajnościowe powinno się przeprowadzić
+ na liczbie 20000 zajęcy z liczbą marchewek z przedziału 0 - 10000 (czas sortowania powinien być mocno poniżej 1 minuty, idealnie poniżej 10 sekund)
+- rozwiązanie powinno być przesłane w formie repozytorium na Githubie lub innym portalu tego typu
+- rozwiązanie nie powinno byc w formie 1 wielkiego commitu, powinno używać branczy i łączenia branczy
+- rozwiązanie powinno zawierać plik README, który opisuje jak uruchomić projekt i z jakich najważniejszych części się składa
+- rozwiązanie powinno zapisywać dane w pamięci lub w localStorage i być w stanie w szybki sposób zmienić swoją warstwę persystencji
+
+
+Część back-end (dla osób aplikujących na staże PY)
+Korzystając z django rest framework, flask, dowolnego innego frameworka lub czystego języka pythona napisz API restowe, które:
+- będzie można utworzyć lub usunąć profil zająca (profil to imię oraz liczba marchewek)
+- dla każdego profilu będzie można dodawać ilość marchewek (liczba całkowita, nieujemna)
+- aby łatwiej dodawać lub odejmować ilość marchewek, będą przyciski +1, -1, +2, -2, +5, -5, +10, -10, +20, -20, +50, -50 etc. dzięki którym każdy z zajęcy będzie mógł szybciej 
+- aby ograniczyć pokusę nieuczciwej rywalizacji nie powinno się móc edytować ilości marchewek wprost (stąd jedyna opcja zmiany licznika to jeden z przycisków + lub -)
+- baza zajęcy będzie zwracana w formie listy (pełnej, bez stronicowania)
+- lista zajęcy będzie sortowana przy każdorazowym zapytaniu
+- sortowanie będzie wykonane przy użyciu algorytmu heapsort, nie wolno korzystać z zewnętrznych bibliotek, należy zaimplementować
+sortowanie samemu, nie wolno sortować przy użyciu bazy danych
+- zadanie powinno zawierać testy automatyczne (jednostkowe, integracyjne) tam gdzie to jest niezbędne
+- aby sprawdzić, czy sortowanie jest wystarczająco szybkie, testy wydajnościowe powinno się przeprowadzić
+ na liczbie 20000 zajęcy z liczbą marchewek z przedziału 0 - 10000 (czas sortowania powinien być mocno poniżej 30 sekund, idealnie poniżej 5 sekund)
+ - ponieważ rozwiązanie ma być w formie RESTowej, w szczególności nie ma konieczności pisania jakiegokolwiek kodu HTML
+ czy CSS, mile widziane będą testy lub opisy użycia poszczególnych endpointów RESTowych
+- rozwiązanie powinno być przesłane w formie repozytorium na Githubie lub innym portalu tego typu
+- rozwiązanie nie powinno byc w formie 1 wielkiego commitu, powinno używać branczy i łączenia branczy
+- rozwiązanie powinno zawierać plik README, który opisuje jak uruchomić projekt i z jakich najważniejszych części się składa
+- rozwiązanie powinno umożliwić zmianę sposobu persystencji (np. zmianę bazy danych) w prosty sposób (w tym m.in. brak hardcodowanych zapytań MySQL)
+
+
+Zadanie powinno rozwiązywać opisane problemy w minimalny sposób, w szczególności nie powinno zawierać żadnych innych nie wymienionych funkcjonalności.
+Ponieważ zadanie ma też sprawdzić komunikatywność, gdyby cokolwiek było niejasne, kandydat powinien skontaktować się z nami w celu wyjaśnienia wątpliwości
+Gdyby kandydat uznał, że 2 tygodnie to zdecydowanie za mało czasu na ukończenie zadania, powinien dostarczyć przynajmniej
+jego część i opisywać ile czasu więcej potrzebował by na pozostałe części z uzasadnieniem.
+
+Przede wszystkim ocenia będzie umiejętność pisania łatwego w czytaniu i zrozumieniu kodu, jakość jest dla nas ważniejsza
+od ilości. Sprawdzamy też umiejętność czytania długiego tekstu ze zrozumieniem w konstruktywny sposób, o ile znalezienie
+błędów czy niejasności w treści będzie mile widziane, równie mile widziane będzie konstruktywność w wyjaśnieniu tych niejasności
+i własna inicjatywa, zaproponowanie swojego rozwiązania razem z zadaniem pytania.
+
+Czas na wykonanie 2 tygodnie.
+Spotkanie z najwyżej ocenianymi kandydatami do 15 czerwca, wyniki po 18 czerwca.
+Na każdą z dwóch ścieżek (PY, JS) przewidujemy maksymalnie 3 miejsca (łącznie maksymalnie 6 osób), w szczególnym przypadku
+dopuszczamy możliwość odwołania w całości jednej lub obu ścieżek.
