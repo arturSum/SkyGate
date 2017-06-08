@@ -1,0 +1,33 @@
+Projekt jest napisany z użyciem Reacta.
+Do przechodzenia pomiędzy widokami wykorzystano bibliotekę react-router 
+Komponenty react'we znajdują się w katalogu components
+
+Poszczególne komponenty odpowiadają za:
+- AddPickerProfile - odawanie nowego profilu użytkownika
+- AssignStock - dodawanie nowego produktu do profilu
+- KingdomPopulationList - lista aktualnie dostepnych profili
+- NavigationBar - panel nawaigacyjny
+- RemoveProfile - panel pozwalajacy usunac profil
+
+Projekt składa się z takich podstawowych elementów jak:
+- PanelController - warstwa komunikacji logiki z widokami. Przekazuje dane z widoku w głąb systemu.
+- RabbitKingdom - warstwa logiki sterująca całym preocesem dodawiana/usuwania uzytkowników, 
+                  dodawania/usuwania produkótw dla danego profilu, pobierania danych dla modelu z magazynu
+- KingdomModelStorageManager - zadaniem tego obiektu jest komunikacja z modelem danych, przetwarzanie obiektu na postać danych
+                               ndających sie do zapisu, jak równiż w drugą stronę. Jest tesz klientem strategi zapisu danych modelu.
+- LocalStorageModelStore - konktetna strategia zapisu danych z modeli, w tym przypadku korzystająca z localStorage
+- CountingSortingFilter - filtr sortujac dane modelu
+- ProductFactory, RabbitFactory - fabryki towrzace kolejno produkt oraz profil użytkownika na podstawie określonych kryteriów.
+
+Na przykładzie dodawania nowego użytkownika projekt działa następująco:
+1. react-router na podstawie adresu /addPickerProfile wyświetla komponent(widok) umożliwiający dodawanie profilu użytkownika
+2. klikajac przycisk "Create" wywoływana jest metoda "createNewProfile" front controllera "PanelController"
+3. ten z kolei po analizie danych wejściowych przekazuje żądanie dodania nowego użytkownika do warstwy logiki "RabbitKingdom"
+4. warstwa ta wtorzy obiekt profil użytkownia i przkazuje żadanie zapisania tego obiektu do klasy "KingdomModelStorageManager"
+5. Klasa ta przetwarza taki obiekt na dane które będą zdatne do zapisu i przkazuje go konkretnej strategi zapisu danych
+6. Klasa strategii zpisuje dane w sposób w niej określony.
+7. Następuje przekierowanie do widoku listy wszytkich profili podczas którego następuje odczyt aktualnych danych z modelu
+   oraz ich wyświetlenie.
+
+
+
