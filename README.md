@@ -23,3 +23,5 @@ Sorting Performance Test:
 3. open in browser test.html
 
 See on line: http://sumartur.cba.pl/RabbitKingdomManager/
+
+More details in file: ProjectInfo
