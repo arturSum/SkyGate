@@ -44,9 +44,9 @@ var runTest = function(){
 
             testedSizeDeltaTime = parseFloat(timeEnd - timeStart).toFixed(2),
 
-            allDeltaTime = parseFloat(testedSizeDeltaTime*(maxTestedDataLength/testQnt)).toFixed(2);
+            allDeltaTime = parseFloat((testedSizeDeltaTime*(maxTestedDataLength/testQnt))/1000).toFixed(2);
 
-        testScore.innerText = `Sorting ${testQnt} qnt time: ${testedSizeDeltaTime} millisecond. For ${maxTestedDataLength} will be ${allDeltaTime} millisecond`;
+        testScore.innerText = `Sorting ${testQnt} qnt time: ${testedSizeDeltaTime} millisecond. For ${maxTestedDataLength} will be ${allDeltaTime} second`;
 
     },
 
@@ -61,6 +61,7 @@ var runTest = function(){
 
         var i = 0,
 
+
             loop = function(){
 
                     if(i<testQnt){
@@ -69,12 +70,12 @@ var runTest = function(){
 
                             pageController.createNewProfile(profileId + '');
 
-                            pageController.addProduct(
-                                (profileId + ''),
-                                '#carrot',
-                                Math.floor(Math.random()*maxTestedDataLength)
-                            );
 
+                            pageController.addProduct(
+                                    (profileId + ''),
+                                    '#carrot',
+                                    Math.floor(Math.random()*maxTestedDataLength)
+                            );
 
                             if(i%buildCounterSize == 0){
 

@@ -46,7 +46,6 @@ class CountingSortingFilter extends SortingFilter{
         //############### SORTING ALGORITHM ################
 
 
-
         var maxProductQnt = Math.max(...countedProductQntList),
 
             productStateList = Array.from({length:maxProductQnt+1}, ()=>0),
