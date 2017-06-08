@@ -24,4 +24,4 @@ Sorting Performance Test:
 
 See on line: http://sumartur.cba.pl/RabbitKingdomManager/
 
-More details in file: ProjectInfo
+More details in file: ProjectInfo, Requirements
