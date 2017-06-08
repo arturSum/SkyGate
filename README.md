@@ -6,14 +6,15 @@ Run:
 2. cd RabbitKingdomManager
 2. npm install
 3. npm run build
-4. open in browser index.html
+4. npm install -g http-server
+5. http-server ./
+6. open in browser http://127.0.0.1:8080/
 
 
 Unit Tests:
 1. npm install -g karma jasmine karma-cli
 2. npm run buildUnitTest
 2. karma start
-3. karma run
 
 
 Sorting Performance Test:
