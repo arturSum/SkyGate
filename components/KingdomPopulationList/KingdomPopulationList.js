@@ -5,7 +5,6 @@ import './KingdomPopulationListStyle.css'
 
 var KingdomPopulationList = (props)=>{
 
-
     var {
         model
     } = props,

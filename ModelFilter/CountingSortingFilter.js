@@ -32,7 +32,7 @@ class CountingSortingFilter extends SortingFilter{
 
                     if(productObj.getId() === productId){
 
-                        profileProductQuantity =+ productObj.getQnt();
+                        profileProductQuantity += productObj.getQnt();
                     }
 
                 }
